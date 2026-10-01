@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINEMAZON - Cine Selva Central | Satipo, Junín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amazon: {
+                            50: '#e6f9f0',
+                            100: '#c3f0d8',
+                            400: '#10b981',
+                            500: '#00a859',
+                            600: '#008a48',
+                            700: '#006b37',
+                            800: '#034d28',
+                            900: '#01321a'
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706'
+                        },
+                        darkbg: '#0c1015',
+                        darkcard: '#141a23',
+                        darkborder: '#222d3d'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles & scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c1015;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222d3d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00a859;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(12, 16, 21, 0.3) 0%, rgba(12, 16, 21, 0.85) 75%, #0c1015 100%);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px rgba(0, 168, 89, 0.4);
+        }
+        .glow-gold {
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+        }
+        .screen-curved {
+            perspective: 500px;
+        }
+        .screen-inner {
+            transform: rotateX(-12deg);
+            box-shadow: 0 15px 40px rgba(0, 168, 89, 0.45);
+        }
+        .ticket-cut {
+            mask-image: radial-gradient(circle at 0% 50%, transparent 12px, black 13px), radial-gradient(circle at 100% 50%, transparent 12px, black 13px);
+            mask-composite: intersect;
+        }
+        /* Proyecto / documento Word */
+        .project-item {
+            display: block;
+            padding: 0.65rem 0.75rem;
+            border-radius: 0.75rem;
+            color: #9ca3af;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .project-item:hover {
+            color: #fff;
+            background: rgba(0, 168, 89, 0.10);
+            transform: translateX(3px);
+        }
+        .project-content-card {
+            scroll-margin-top: 100px;
+            padding: 1.25rem;
+            border: 1px solid #222d3d;
+            border-radius: 1rem;
+            background: rgba(20, 26, 35, 0.72);
+            min-height: 130px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .project-content-card:hover {
+            border-color: rgba(0, 168, 89, 0.45);
+            transform: translateY(-2px);
+        }
+        .project-content-card h4 {
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 0.55rem;
+        }
+        .project-content-card p {
+            color: #6b7280;
+            font-size: 0.8rem;
+            line-height: 1.65;
+        }
+    </style>
+    <!--
+        ==========================================
+        IMÁGENES PERSONALIZABLES DE CINEMAZON
+        ==========================================
+        Coloca tus archivos dentro de la carpeta "img".
+        El diseño no necesita cambiarse; solo reemplaza estos archivos:
+
+        img/logo-cinemazon.png  -> Logo
+        img/hero-1.jpg          -> Fondo principal / película 1
+        img/hero-2.jpg          -> Fondo principal / película 2
+        img/hero-3.jpg          -> Fondo principal / película 3
+        img/pelicula-1.jpg      -> Poster película 1
+        img/pelicula-2.jpg      -> Poster película 2
+        img/pelicula-3.jpg      -> Poster película 3
+        img/combo-pareja.png    -> Imagen Combo Pareja
+        img/combo-selva.png     -> Imagen Combo Selva Central
+        img/canchita-xl.png     -> Imagen Canchita Balde XL
+
+        Puedes reemplazar un archivo por otro manteniendo exactamente el mismo nombre.
+        No necesitas tocar HTML, CSS ni JavaScript.
+        ==========================================
+    -->
+<style>
+/* ===== Documento corporativo CINEMAZON ===== */
+.doc-shell{max-width:1100px;margin:auto}
+.doc-cover{position:relative;min-height:390px;border:1px solid #26332d;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(35,197,94,.22),transparent 35%),radial-gradient(circle at 85% 75%,rgba(234,179,8,.18),transparent 35%),#050806;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.doc-cover:before{content:"";position:absolute;inset:18px;border:1px solid rgba(234,179,8,.2);border-radius:20px}
+.doc-cover-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(22,163,74,.12);filter:blur(30px)}
+.doc-cover-content{position:relative;text-align:center;padding:45px}
+.doc-kicker{font-size:11px;letter-spacing:.35em;font-weight:800;color:#d4af37}
+.doc-cover h3{font-size:clamp(42px,7vw,82px);line-height:.92;font-weight:900;letter-spacing:-.04em;color:#fff;margin:18px 0}
+.doc-cover h3 span{color:#d4af37}
+.doc-cover p{color:#aab5af;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.doc-cover-line{width:100px;height:2px;background:#d4af37;margin:25px auto}
+.doc-cover small{color:#87938c;letter-spacing:.15em}
+.doc-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 28px;padding:15px;background:#0c1310;border:1px solid #26332d;border-radius:18px;position:sticky;top:12px;z-index:20;backdrop-filter:blur(12px)}
+.doc-nav a{font-size:11px;font-weight:800;color:#9ca8a1;padding:9px 12px;border-radius:10px;transition:.2s}
+.doc-nav a:hover{background:#152019;color:#d4af37}
+.doc-paper{background:#f8f7f3;color:#202522;border-radius:4px;box-shadow:0 25px 70px rgba(0,0,0,.35);padding:clamp(25px,5vw,70px)}
+.doc-section{padding:0 0 52px;margin-bottom:52px;border-bottom:1px solid #dddeda;scroll-margin-top:90px}
+.doc-section:last-of-type{border-bottom:0;margin-bottom:0}
+.doc-section-head{display:flex;align-items:center;gap:14px;margin-bottom:25px}
+.doc-section-head span{font-size:12px;font-weight:900;color:#177245;letter-spacing:.15em}
+.doc-section-head h3{font-size:clamp(19px,3vw,29px);letter-spacing:.03em;margin:0;color:#18201c;font-weight:900}
+.doc-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#d8dbd7;border:1px solid #d8dbd7}
+.doc-info-grid>div{background:#fff;padding:18px 20px}
+.doc-info-grid .wide{grid-column:1/-1}
+.doc-info-grid b,.doc-question b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#177245;margin-bottom:7px}
+.doc-paper p{font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.75;color:#414944;margin:0}
+.doc-question{margin-bottom:22px}
+.doc-question p{margin-top:7px}
+.doc-paper blockquote{margin:0;padding:26px 28px;border-left:4px solid #d4af37;background:#f0f2ed;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.8;color:#27302b}
+.doc-table-wrap{overflow-x:auto}
+.doc-table{width:100%;border-collapse:collapse;background:#fff}
+.doc-table th{background:#17231d;color:#fff;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:15px}
+.doc-table td{padding:16px;border:1px solid #dfe2de;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55}
+.doc-table tr:nth-child(even) td{background:#f6f7f4}
+.doc-subtitle{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#177245;margin:28px 0 10px;font-weight:900}
+.doc-image-large{background:#eef1ed;border:1px solid #d8ddd8;padding:15px;display:flex;justify-content:center;align-items:center}
+.doc-image-large img{max-width:100%;max-height:620px;object-fit:contain}
+.tag-grid{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0 22px}
+.tag-grid span{background:#e8efe9;border:1px solid #cbd9ce;color:#145c39;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800}
+.doc-highlight{background:#f0f3ef;border:1px solid #d6ddd7;border-radius:12px;padding:20px 22px;margin-top:20px}
+.doc-highlight b{display:block;color:#177245;text-transform:uppercase;font-size:11px;letter-spacing:.1em;margin-bottom:8px}
+.application-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.application-grid figure{margin:0;background:#fff;border:1px solid #d9ddd9;padding:10px;border-radius:12px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
+.application-grid img{width:100%;height:250px;object-fit:contain;background:#f1f3f0;border-radius:8px}
+.application-grid figcaption{text-align:center;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:#39433e;padding:12px 4px 6px}
+.doc-message,.doc-slogan{margin-top:20px;padding:22px;border-radius:14px;text-align:center}
+.doc-message{background:#17231d;color:#fff}.doc-slogan{background:#d4af37;color:#161a17}
+.doc-message small,.doc-slogan small{font-size:10px;letter-spacing:.2em;font-weight:900;opacity:.8}
+.doc-message p,.doc-slogan p{font-family:Georgia,'Times New Roman',serif;font-size:21px;margin-top:8px;color:inherit}
+.doc-end{text-align:center;border-top:1px solid #d8dbd7;padding-top:28px;margin-top:25px;color:#77817b;font-size:10px;font-weight:900;letter-spacing:.2em}
+.swatch{display:inline-block;width:17px;height:17px;border-radius:50%;vertical-align:-4px;margin-right:8px;border:1px solid #bbb}.swatch.black{background:#111}.swatch.green{background:#16803f}.swatch.red{background:#b91c1c}.swatch.yellow{background:#eab308}
+@media(max-width:700px){.doc-info-grid{grid-template-columns:1fr}.doc-info-grid .wide{grid-column:auto}.application-grid{grid-template-columns:1fr}.application-grid img{height:auto;max-height:500px}.doc-paper{padding:24px 17px}.doc-nav{position:static}.doc-cover{min-height:320px}.doc-cover-content{padding:30px 15px}.doc-paper p{font-size:15px}}
+.doc-image-secondary{margin:14px auto 0;max-width:500px;background:#eef1ed;border:1px solid #d8ddd8;padding:10px}.doc-image-secondary img{display:block;width:100%;max-height:420px;object-fit:contain}.communication-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.communication-images img{width:100%;max-height:520px;object-fit:contain;background:#eef1ed;border:1px solid #d8ddd8;border-radius:10px}@media(max-width:700px){.communication-images{grid-template-columns:1fr}}
+
+/* ===== Menú jerárquico del proyecto CINEMAZON ===== */
+
+.inicio-panel{min-width:235px}.inicio-category-link{display:block;width:100%;padding:10px 12px;border-radius:10px;color:#d1d5db;font-size:12px;font-weight:800;text-align:left;transition:background .18s ease,color .18s ease}.inicio-category-link:hover,.inicio-category-link:focus{background:rgba(0,168,89,.12);color:#fff;outline:none}.doc-nav{display:none!important}
+.project-menu{position:relative}
+.project-menu-panel{position:absolute;top:calc(100% + 12px);left:0;min-width:250px;background:#101820;border:1px solid #263342;border-radius:14px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.2s ease;z-index:80}
+.project-menu:hover .project-menu-panel,.project-menu:focus-within .project-menu-panel{opacity:1;visibility:visible;transform:translateY(0)}
+.project-menu-panel a{display:block;padding:10px 12px;border-radius:10px;color:#b8c0c9;font-size:12px;font-weight:700;transition:.2s}
+.project-menu-panel a:hover{background:rgba(0,168,89,.12);color:#fff;transform:translateX(3px)}
+.project-menu-label{display:flex;align-items:center;gap:7px;cursor:pointer;color:#d1d5db;transition:.2s}
+.project-menu-label:hover{color:#10b981}
+.project-menu-group{padding:7px 6px 5px;margin:2px 0;border-bottom:1px solid #25303c}
+.project-menu-group:last-child{border-bottom:0}
+.project-menu-group-title{display:block;padding:5px 6px 7px;color:#fbbf24;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+.project-menu-group a{padding:8px 9px;font-size:11px}
+.mobile-project-group{border:1px solid #25303c;border-radius:12px;background:#101820;overflow:hidden}
+.mobile-project-group summary{list-style:none;cursor:pointer;padding:11px 12px;color:#d1d5db;font-size:12px;font-weight:800}
+.mobile-project-group summary::-webkit-details-marker{display:none}
+.mobile-project-group[open] summary{color:#10b981;border-bottom:1px solid #25303c}
+.mobile-project-links{padding:5px 8px 8px}
+.mobile-project-links a{display:block;padding:8px 8px;color:#9ca3af;font-size:11px;font-weight:600;border-radius:8px}
+.mobile-project-links a:hover{background:rgba(0,168,89,.1);color:#fff}
+</style>
+</head>
+<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-amazon-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-24 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- HEADER NAVBAR -->
+    <header class="sticky top-0 z-40 bg-darkbg/95 backdrop-blur-md border-b border-darkborder/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Official Cinemazon Vector Logo -->
+                <a href="#" class="flex items-center gap-3 group">                <div class="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                    <!-- IMAGEN PERSONALIZABLE: coloca tu logo en img/logo-cinemazon.png -->
+                    <img src="img/logocine.png"
+                         class="w-full h-full object-contain drop-shadow-md"
+                         alt="Logo CINEMAZON">
+                </div>
+
+                    <div class="flex flex-col">
+                        <div class="flex items-center">
+                            <span class="text-2xl font-black tracking-tight text-white font-sans">CINEMA<span class="text-amazon-500">ZON</span></span>
+                        </div>
+                        <span class="text-[9px] tracking-widest text-emerald-400 font-extrabold uppercase block -mt-1">Cine Selva Central • Satipo</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-5 font-semibold text-sm">
+                    <!-- INICIO: categorías principales del proyecto -->
+                    <div class="project-menu">
+                        <button type="button" class="project-menu-label text-sm" aria-haspopup="true">
+                            <i class="fa-solid fa-house text-amazon-500"></i> Inicio <i class="fa-solid fa-chevron-down text-[9px]"></i>
+                        </button>
+                        <div class="project-menu-panel inicio-panel">
+                            <a class="inicio-category-link" href="#doc-empresa">Empresa</a>
+                            <a class="inicio-category-link" href="#doc-publico">Público Objetivo</a>
+                            <a class="inicio-category-link" href="#doc-identidad-corporativa">Identidad Corporativa</a>
+                            <a class="inicio-category-link" href="#doc-identidad">Identidad Visual</a>
+                            <a class="inicio-category-link" href="#doc-imagen-institucional">Imagen Institucional</a>
+                            <a class="inicio-category-link" href="#doc-aplicaciones">Aplicaciones</a>
+                            <a class="inicio-category-link" href="#doc-comunicacion">Comunicación</a>
+                            <a class="inicio-category-link" href="#doc-mejoras">Propuestas de Mejora</a>
+                            <a class="inicio-category-link" href="#doc-conclusiones">Conclusiones</a>
+                        </div>
+                    </div>
+
+                    <a href="#cartelera" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-film text-amazon-500"></i> Cartelera</a>
+                    <a href="#dulceria" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-popcorn text-gold-500"></i> Dulcería</a>
+                    <a href="#promociones" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-tags text-emerald-400"></i> Promociones</a>
+                    <a href="#ubicacion" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-red-500"></i> Satipo
+                    </a>
+                </nav>
+
+                
+
+                    <!-- Cart Trigger -->
+                    <button onclick="toggleCartSidebar(true)" class="relative p-2.5 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500/50 text-gray-200 transition-all duration-300 hover:text-amazon-500 flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping text-base"></i>
+                        <span class="hidden lg:inline text-xs font-bold text-gray-300" id="headerCartTotal">S/. 0.00</span>
+                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amazon-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden shadow-md">0</span>
+                    </button>
+
+                    <a href="#cartelera" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg shadow-amazon-500/20 hover:scale-105 active:scale-95 transition-all text-xs">
+                        <i class="fa-solid fa-ticket"></i> Entradas
+                    </a>
+
+                    <!-- Mobile Toggle -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-darkcard">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-darkcard border-b border-darkborder px-4 py-4 space-y-3 max-h-[80vh] overflow-y-auto">
+            <div class="mb-3">
+                <input type="text" oninput="handleSearch()" placeholder="Buscar película..." class="w-full bg-darkbg border border-darkborder rounded-xl px-3 py-2 text-xs text-white outline-none">
+            </div>
+
+            <details class="mobile-project-group" open>
+                <summary><i class="fa-solid fa-house w-6 text-amazon-500"></i> INICIO</summary>
+                <div class="mobile-project-links">
+                    <a href="#doc-empresa" onclick="toggleMobileMenu()">Empresa</a>
+                    <a href="#doc-publico" onclick="toggleMobileMenu()">Público Objetivo</a>
+                    <a href="#doc-identidad-corporativa" onclick="toggleMobileMenu()">Identidad Corporativa</a>
+                    <a href="#doc-identidad" onclick="toggleMobileMenu()">Identidad Visual</a>
+                    <a href="#doc-imagen-institucional" onclick="toggleMobileMenu()">Imagen Institucional</a>
+                    <a href="#doc-aplicaciones" onclick="toggleMobileMenu()">Aplicaciones</a>
+                    <a href="#doc-comunicacion" onclick="toggleMobileMenu()">Comunicación</a>
+                    <a href="#doc-mejoras" onclick="toggleMobileMenu()">Propuestas de Mejora</a>
+                    <a href="#doc-conclusiones" onclick="toggleMobileMenu()">09 Conclusiones</a>
+                </div>
+            </details>
+
+            <a href="#cartelera" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-film w-6 text-amazon-500"></i> Cartelera</a>
+            <a href="#dulceria" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-popcorn w-6 text-gold-500"></i> Dulcería & Combos</a>
+            <a href="#promociones" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-tags w-6 text-emerald-400"></i> Promociones</a>
+
+            <a href="#ubicacion" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-location-dot w-6 text-red-500"></i> Ubicación Satipo</a>
+        </div>
+    </header>
+
+    <!-- HERO CAROUSEL -->
+    <section class="relative bg-darkbg overflow-hidden min-h-[500px] lg:min-h-[580px] flex items-center border-b border-darkborder">
+        <!-- Hero Background: video del tráiler + imagen de respaldo -->
+        <div id="heroBgContainer" class="absolute inset-0 z-0 overflow-hidden">
+            <img id="heroBgImage" src="img/hero-1.jpg" class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-all duration-1000" alt="Cinemazon Hero Banner">
+            
+            <!-- Tráiler local como video de fondo, sin controles y sin sonido -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <video
+                    id="heroBgVideo"
+                    class="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
+                    src="videos/avengers.mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    aria-hidden="true">
+                </video>
+            </div>
+
+            <!-- Capa para oscurecer y mejorar la lectura del contenido -->
+            <div class="absolute inset-0 bg-black/35"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+            <div class="max-w-2xl">
+                <!-- Tag -->
+                <div class="inline-flex items-center gap-2 bg-amazon-500/20 border border-amazon-500/40 text-emerald-300 font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-amazon-500 animate-pulse"></span> Gran Estreno en Satipo
+                </div>
+
+                <!-- Title & Specs -->
+                <h1 id="heroTitle" class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4 drop-shadow-md">
+                    AVENGERS: DOOMSDAY
+                </h1>
+
+                <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-300 mb-6">
+                    <span class="bg-gold-500/20 border border-gold-500/50 text-gold-400 px-2.5 py-1 rounded-md font-extrabold">14+</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-amazon-500"></i> <span id="heroDuration">2h 15min</span></span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-masks-theater text-amazon-500"></i> <span id="heroGenre">Acción / Fantasía</span></span>
+                    <span class="flex items-center gap-1 text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.9/5</span>
+                </div>
+
+                <p id="heroDescription" class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8 line-clamp-3">
+                    Un nuevo orden se alza desde las cenizas. El destino del multiverso está en sus manos. Disfruta de Avengers: Doomsday en Cinemazon.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <button onclick="openSeatModal('p1', 'AVENGERS: DOOMSDAY', '18:30')" class="bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-extrabold px-7 py-3.5 rounded-xl shadow-lg shadow-amazon-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-ticket text-lg"></i> Reservar Asientos
+                    </button>
+                    <button id="heroTrailerButton" onclick="openTrailerModal(heroSlides[currentHeroIndex].trailer)" class="bg-darkcard/80 hover:bg-darkborder text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 hover:text-white">
+                        <i class="fa-solid fa-circle-play text-red-500 text-lg"></i> Ver Tráiler
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="absolute bottom-6 right-6 sm:right-12 z-20 flex gap-2" id="heroDots">
+            <button onclick="changeHero(0)" class="w-3 h-3 rounded-full bg-amazon-500 transition-all"></button>
+            <button onclick="changeHero(1)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
+            <button onclick="changeHero(2)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
+        </div>
+    </section>
+
+    <!-- CARTELERA DE PELÍCULAS -->
+    <section id="cartelera" class="py-16 bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                <div>
+                    <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">En Cartelera</span>
+                    <h2 class="text-3xl font-black text-white tracking-tight mt-1">Películas Disponibles en Satipo</h2>
+                    <p class="text-gray-400 text-sm mt-1">Elige la película y horario de tu preferencia para asegurar tu entrada.</p>
+                </div>
+
+                <!-- Date Tabs Filter -->
+                <div class="flex items-center bg-darkcard p-1.5 rounded-2xl border border-darkborder self-start md:self-auto">
+                    <button onclick="filterDate(this, 'hoy')" class="date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md">
+                        Hoy
+                    </button>
+                    <button onclick="filterDate(this, 'manana')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
+                        Mañana
+                    </button>
+                    <button onclick="filterDate(this, 'finde')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
+                        Fin de Semana
+                    </button>
+                </div>
+            </div>
+
+            <!-- Movies Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="movieGrid">
+                
+                <!-- Movie 1 -->
+                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="Avengers: Doomsday">
+                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
+                        <img src="img/avengers.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Avengers: Doomsday">
+                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-emerald-400 border border-emerald-500/30">
+                            3D DIGITAL
+                        </div>
+                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
+                            ★ 4.9
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span>135 min</span> • <span>Acción / Fantasía</span> • <span class="text-emerald-400 font-bold">14+</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">Avengers: Doomsday</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
+                                Un nuevo orden se alza desde las cenizas. El destino del multiverso está en sus manos, disfrutalo con efectos de sonido Dolby Atmos.
+                            </p>
+                            <button onclick="openTrailerModal('https://www.youtube.com/watch?v=lAr_uspgHm8')" class="w-full mt-2 bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-play"></i> Ver tráiler
+                            </button>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '16:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    4:00 PM
+                                </button>
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '18:30')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    6:30 PM
+                                </button>
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '21:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    9:00 PM
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie 2 -->
+                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="La Guerra del Mañana">
+                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
+                        <img src="img/la guerra del mañana.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="La Guerra del Mañana">
+                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-blue-400 border border-blue-500/30">
+                            2D HD
+                        </div>
+                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
+                            ★ 4.7
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span>2h 11min</span> • <span>Acción / Ciencia ficción</span> • <span class="text-emerald-400 font-bold">13+</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">La Guerra del Mañana</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
+                                 Viajeros del tiempo reclutan a soldados y civiles del presente para viajar al año 2051 y salvar a la humanidad de una letal invasión alienígena. Acción y ciencia ficción al límite con Chris Pratt.
+                            </p>
+                            <button onclick="openTrailerModal('https://www.youtube.com/watch?v=ZUsKyO1gCIw')" class="w-full mt-2 bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-play"></i> Ver tráiler
+                            </button>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="openSeatModal('p2', 'La Guerra del Mañana', '15:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    3:00 PM
+                                </button>
+                                <button onclick="openSeatModal('p2', 'La Guerra del Mañana', '17:15')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    5:15 PM
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie 3 -->
+                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="The Super Mario Bros. Movie">
+                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
+                        <img src="img/mario bross.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="The Super Mario Bros. Movie">
+                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-purple-400 border border-purple-500/30">
+                            2D DIGITAL
+                        </div>
+                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
+                            ★ 4.8
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+                                <span>1h 32min</span> • <span>Animación / Aventura</span> • <span class="text-emerald-400 font-bold">APTA</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">The Super Mario Bros. Movie</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
+                                ¡El videojuego que marcó generaciones cobra vida! Únete a Mario y Peach en una aventura espectacular para salvar el Reino Champiñón de las garras de Bowser. ¡Una experiencia visual que no te puedes perder!
+                            </p>
+                            <button onclick="openTrailerModal('https://www.youtube.com/watch?v=DmCZoiCp5C0')" class="w-full mt-2 bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-play"></i> Ver tráiler
+                            </button>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="openSeatModal('p3', 'The Super Mario Bros. Movie', '20:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    8:00 PM
+                                </button>
+                                <button onclick="openSeatModal('p3', 'The Super Mario Bros. Movie', '22:15')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+                                    10:15 PM
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DULCERÍA & COMBOS SECTION -->
+    <section id="dulceria" class="py-16 bg-darkcard/40 border-t border-b border-darkborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-gold-400 text-xs font-black uppercase tracking-widest">Dulcería Oficial Cinemazon</span>
+                <h2 class="text-3xl font-black text-white tracking-tight mt-1">Snacks y Combos Exclusivos</h2>
+                <p class="text-gray-400 text-sm mt-2">Personalizados con la frescura y sabor único de nuestra Selva Central.</p>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="flex justify-center flex-wrap gap-3 mb-10">
+                <button onclick="filterSnacks('todos')" class="snack-tab bg-amazon-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all">
+                    Todos
+                </button>
+                <button onclick="filterSnacks('combos')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
+                    🍿 Combos
+                </button>
+                <button onclick="filterSnacks('popcorn')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
+                    🌽 Canchita
+                </button>
+                <button onclick="filterSnacks('bebidas')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
+                    🥤 Bebidas Regionales
+                </button>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="snackGrid">
+                
+                <!-- Combo Pareja -->
+                <div class="snack-card combos bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-gold-500/50 transition-all flex flex-col justify-between group">
+                    <div>                        <!-- IMAGEN PERSONALIZABLE: coloca tu imagen en img/combo-pareja.png -->
+                        <div class="relative rounded-2xl overflow-hidden  flex items-center justify-center border border-darkborder">
+                            <img src="img/combo parejas.jpg"
+                                 class="w-100 h-100 object-contain drop-shadow-xl"
+                                 alt="">
+                        </div>
+                        <h3 class="text-xl font-extrabold text-white mb-1">Combo Pareja</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">1 Canchita Gigante Balde Cinemazon + 2 Gaseosas Medianas (Inca Kola / Regional) + 1 Dulce a elección.</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
+                        <span class="text-amazon-500 font-black text-xl">S/. 45.00</span>
+                        <button onclick="addToCart('Combo Pareja', 45.00, 'combo')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Combo Selva Central -->
+                <div class="snack-card combos bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-amazon-500/50 transition-all flex flex-col justify-between group">
+                    <div>                        <!-- IMAGEN PERSONALIZABLE: coloca tu imagen en img/combo-selva.png -->
+                        <div class="relative rounded-2xl overflow-hidden  flex items-center justify-center border border-darkborder">
+                            <img src="img/combo selvatico.jpg"
+                                 class="w-100 h-100 object-contain drop-shadow-xl"
+                                 alt="">
+                        </div>
+                        <h3 class="text-xl font-extrabold text-white mb-1">Combo Selva Central</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">1 Canchita Mantequilla + 1 Gaseosa Regional de Fruta + Nachos Crujientes con Queso Cheddar.</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
+                        <span class="text-amazon-500 font-black text-xl">S/. 38.00</span>
+                        <button onclick="addToCart('Combo Selva Central', 38.00, 'combo')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canchita Balde XL -->
+                <div class="snack-card popcorn bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-gold-500/50 transition-all flex flex-col justify-between group">
+                    <div>                        <!-- IMAGEN PERSONALIZABLE: coloca tu imagen en img/canchita-xl.png -->
+                        <div class="relative rounded-2xl overflow-hidden  flex items-center justify-center border border-darkborder">
+                            <img src="img/canchita xl.jpg"
+                                 class="w-100 h-100 object-contain drop-shadow-xl"
+                                 alt="">
+                        </div>
+                        <h3 class="text-xl font-extrabold text-white mb-1">Canchita Balde XL</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">Balde Gigante edición coleccionable Cinemazon con mantequilla extra o salada al gusto.</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
+                        <span class="text-amazon-500 font-black text-xl">S/. 22.00</span>
+                        <button onclick="addToCart('Canchita Balde XL', 22.00, 'snack')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOCIONES & SOCIAL -->
+    <section id="promociones" class="py-16 bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-emerald-400 text-xs font-black uppercase tracking-widest">Beneficios Exclusivos</span>
+                <h2 class="text-3xl font-black text-white tracking-tight mt-1">Promociones Especiales</h2>
+                <p class="text-gray-400 text-sm mt-2">Aprovecha nuestras ofertas semanales en las salas de Cinemazon Satipo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Promo 1 -->
+                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-amazon-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-amazon-500 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-amazon-500/20 text-amazon-500 flex items-center justify-center text-xl font-bold mb-4">
+                        2x1
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white mb-2">Miércoles de Cine 2x1</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Ven acompañado los miércoles y paga solo 1 entrada para funciones 2D y 3D en todas nuestras salas.
+                    </p>
+                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-wider block">Válido en Boletería y Web</span>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-gold-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-gold-500 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white mb-2">Descuento Estudiantil</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        Presenta tu carnet escolar o universitario en boletería y obtén un 25% de descuento de Lunes a Viernes.
+                    </p>
+                    <span class="text-gold-400 font-bold text-xs uppercase tracking-wider block">Satipo & Selva Central</span>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-purple-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl font-bold mb-4">
+                        🎂
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white mb-2">Cumpleañero Gratis</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                        ¡En tu cumpleaños la entrada es totalmente gratis! Presenta tu DNI en boletería el día de tu cumpleaños.
+                    </p>
+                    <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block">Incluye Regalo Sorpresa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN & CONTACTO SATIPO -->
+
+
+    
+<!-- =========================================================
+     DOCUMENTO: IMAGEN CORPORATIVA – CINEMAZON
+     Contenido basado en el documento Word proporcionado.
+     Las imágenes originales del Word están en img/documento/
+========================================================= -->
+<section id="documentacion" class="py-20 bg-[#080d0b] border-t border-b border-darkborder">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-4xl mx-auto mb-12">
+      <span class="text-gold-400 text-xs font-black uppercase tracking-[0.3em]">Documento corporativo</span>
+      <h2 class="text-3xl md:text-5xl font-black text-white mt-3">Imagen Corporativa – CINEMAZON</h2>
+      <p class="text-gray-400 mt-4 leading-relaxed">Presentación digital del documento de identidad e imagen corporativa de CINEMAZON, conservando su estructura, contenido e imágenes.</p>
+    </div>
+
+    <div class="doc-shell">
+      <div class="doc-cover">
+        <div class="doc-cover-glow"></div>
+        <div class="doc-cover-content">
+          <div class="doc-kicker">CINEMAZON PERU S.A.C.</div>
+          <h3>IMAGEN<br><span>CORPORATIVA</span></h3>
+          <p>Identidad · Imagen · Comunicación</p>
+          <div class="doc-cover-line"></div>
+          <small>Satipo · Junín · Selva Central</small>
+        </div>
+      </div>
+
+
+
+      <article class="doc-paper">
+        <section id="doc-empresa" class="doc-section">
+          <div class="doc-section-head"><span>01</span><h3>DATOS DE LA EMPRESA</h3></div>
+          <div class="doc-info-grid">
+            <div><b>Nombre de la empresa</b><p>CINEMAZON PERU S.A.C.</p></div>
+            <div><b>Nombre de la marca</b><p>CINEMAZON</p></div>
+            <div><b>Actividad o rubro</b><p>Entretenimiento, exhibición cinematográfica y servicios recreativos.</p></div>
+            <div><b>Producto o servicio</b><p>Proyección de películas en salas de cine, venta de confitería (snacks y bebidas) y salas de entretenimiento audiovisual.</p></div>
+            <div><b>Ubicación</b><p>Satipo, Junín</p></div>
+            <div class="wide"><b>Público objetivo</b><p>Hombres y mujeres de 12 a 50 años, de niveles socioeconómicos B y C, interesados en cine comercial, cultura audiovisual, entretenimiento y espacios de convivencia social en la Selva Central.</p></div>
+          </div>
+        </section>
+
+        <section id="doc-descripcion" class="doc-section">
+          <div class="doc-section-head"><span>02</span><h3>DESCRIPCIÓN DE LA EMPRESA</h3></div>
+          <div class="doc-question"><b>¿A qué se dedica la empresa?</b><p>Cinemazon es un complejo cinematográfico moderno dedicado a la proyección de películas del cine mundial y nacional, ofreciendo una experiencia audiovisual de vanguardia en un ambiente cómodo, seguro y accesible para toda la comunidad de la selva central.</p></div>
+          <div class="doc-question"><b>¿Qué producto o servicio ofrece?</b><p>Ofrece proyección de películas en salas 2D y 3D con tecnología digital 4K, sonido envolvente y un servicio de confitería con canchita, bebidas, y golosinas.</p></div>
+        </section>
+
+        <section id="doc-mision" class="doc-section">
+          <div class="doc-section-head"><span>03</span><h3>MISIÓN</h3></div>
+          <blockquote>“Brindar una experiencia cinematográfica de nivel internacional en la Selva Central, ofreciendo instalaciones modernas, innovación tecnológica y un servicio de excelencia que integre y entretenga a toda la familia.”</blockquote>
+        </section>
+
+        <section id="doc-vision" class="doc-section">
+          <div class="doc-section-head"><span>04</span><h3>VISIÓN</h3></div>
+          <blockquote>“Convertirse en la cadena de cines líder y mas reconocida de la Selva Central del Perú para el 2030, destacando por la modernidad de sus salas, la calidad de su servicio y la expansión de la cultura del cine en la Región.”</blockquote>
+        </section>
+
+        <section id="doc-valores" class="doc-section">
+          <div class="doc-section-head"><span>05</span><h3>VALORES CORPORATIVOS</h3></div>
+          <div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Valor</th><th>¿Qué significa para Cinemazon?</th></tr></thead><tbody>
+            <tr><td>Calidad</td><td>Ofrecer las mejores salas de proyección, sonido impecable y confitería de primer nivel.</td></tr>
+            <tr><td>Responsabilidad</td><td>Cumplir con la puntualidad de las funciones y cuidar las instalaciones de la empresa.</td></tr>
+            <tr><td>Respeto</td><td>Tratar de manera cordial y amable a todos los clientes y colaboradores.</td></tr>
+            <tr><td>Compromiso</td><td>Buscar mejorar continuamente la experiencia de cine y entretenimiento en la región.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section id="doc-publico" class="doc-section">
+          <div class="doc-section-head"><span>06</span><h3>PÚBLICO OBJETIVO</h3></div>
+          <div class="doc-question"><b>¿A quién está dirigida CINEMAZON?</b><p>El público objetivo está conformado por personas interesadas en el entretenimiento cinematográfico y en espacios modernos de convivencia en la Selva Central.</p></div>
+          <div class="doc-bullets">
+            <p><b>Segmento objetivo:</b> Hombres y mujeres de 12 a 50 años, principalmente de niveles socioeconómicos B y C, interesados en cine comercial, cultura audiovisual, entretenimiento y convivencia social.</p>
+            <p><b>Edad:</b> Jóvenes y adultos de 12 a 50 años.</p>
+            <p><b>Ubicación:</b> Principalmente personas de Satipo y Selva Central.</p>
+            <p><b>Necesidades:</b> Disfrutar de los últimos estrenos cinematográficos, entretenerse en familia o con amigos y acceder a snacks de calidad.</p>
+            <p><b>Características:</b> Personas que buscan entretenimiento audiovisual en pantalla grande, comodidad y un espacio moderno de recreación.</p>
+          </div>
+        </section>
+
+        <section id="doc-personalidad" class="doc-section">
+          <div class="doc-section-head"><span>07</span><h3>PERSONALIDAD DE LA EMPRESA</h3></div>
+          <p class="doc-lead">Cinemazon quiere proyectarse como un cine:</p>
+          <div class="tag-grid">
+            <span>✓ Moderna</span><span>✓ Profesional</span><span>✓ Cercana</span><span>✓ Acogedora</span><span>✓ Innovadora</span><span>✓ Amigable</span>
+          </div>
+          <div class="doc-highlight"><b>Descripción</b><p>Cinemazon tendrá una personalidad moderna, innovadora y amigable, buscando que las familias y jóvenes de la Selva Central disfruten de una experiencia inmersiva y entretenida en cada vista.</p></div>
+        </section>
+
+        <section id="doc-identidad-corporativa" class="doc-section">
+          <div class="doc-section-head"><span>08</span><h3>IDENTIDAD CORPORATIVA</h3></div>
+          <div class="doc-question"><b>¿Qué es la imagen corporativa?</b><p>Es la percepción que el público construye sobre CINEMAZON a partir de su identidad, comunicación, servicio y presencia visual.</p>
+        <img src="img/corporativa.jpg" alt="Logotipo de CINEMAZON"></div>
+          <div class="doc-highlight"><b>Elementos de identidad</b><p>Nombre de marca, logotipo, colores, tipografía, elementos gráficos, personalidad, lenguaje y aplicaciones corporativas.</p></div>
+          <div class="doc-table-wrap" style="margin-top:18px"><table class="doc-table"><thead><tr><th>Aspecto</th><th>Aplicación en CINEMAZON</th></tr></thead><tbody>
+            <tr><td>Tipos de identidad</td><td>Identidad visual, verbal y cultural integradas para mantener una marca coherente.</td></tr>
+            <tr><td>Identidad cultural</td><td>Inspiración en la Selva Central, cercanía con la comunidad y valores de calidad, responsabilidad, respeto y compromiso. Por ejemplo:
+                <p>●Inspiración en la Selva Central
+Decoraremos algunos espacios del cine con elementos visuales inspirados en la flora, fauna y paisajes de la Selva Central.
+Por ejemplo, murales con paisajes representativos de la zona.</p>
+
+                <p>●Participación en actividades de la comunidad
+CINEMAZON participará en actividades culturales, educativas o recreativas de la localidad.
+Por ejemplo, realizar funciones especiales durante festividades locales o apoyar actividades organizadas por la comunidad.</p>
+
+                <p>●Promoción del talento local
+Crearemos espacios para mostrar el trabajo de jóvenes y artistas de la zona.
+Por ejemplo, realizar una muestra de cortometrajes realizados por estudiantes o productores audiovisuales locales.</p>
+
+                <p>●Compromiso con el cuidado del entorno
+Realizaremos campañas relacionadas con el cuidado de la naturaleza, vinculando la marca con una característica importante de la Selva Central.
+Por ejemplo, campañas de reciclaje dentro del cine o actividades de sensibilización ambiental.</p>
+
+            <img src="img/salas.jpg" alt="Logotipo de CINEMAZON"></td></tr>
+            <tr><td>Identidad verbal</td><td>Lenguaje dinámico, cercano y amigable, orientado a generar emoción y conexión con los amantes del cine:
+                <p>●“¡Prepárate para disfrutar tu película!” → comunicación cercana y entusiasta.</p>
+
+                <p>●“Tu próxima aventura comienza en CINEMAZON.” → relaciona el cine con emoción y aventura.</p>
+
+                <p>●“¿Ya elegiste qué película vas a disfrutar hoy?” → habla al cliente de manera directa y amigable.</p>
+
+                <p>●“Ven, disfruta y haz que la función sea parte de tu historia.” → busca conectar emocionalmente con el público.</p>
+
+                <p>●“Más que ver una película, vive la experiencia CINEMAZON.” → comunica que la marca busca diferenciarse por la experiencia, no solo por proyectar películas.</p>
+                 <img src="img/verbal.jpg" alt="Logotipo de CINEMAZON"></td></tr>
+            <tr><td>Identidad corporativa</td><td>Conjunto de rasgos que permiten reconocer a CINEMAZON como una marca moderna, profesional, cercana, acogedora, innovadora y amigable:
+
+                <p>●Moderna ----> Incorporará tecnología en la compra de entradas, pagos digitales y comunicación mediante redes sociales.</p>
+
+                <p>●Profesional	---->Capacitará al personal para brindar una atención organizada, eficiente y de calidad.</p>
+
+                <p>●Acogedora ---->Ofrecerá espacios limpios, cómodos y agradables, procurando que el cliente se sienta bienvenido desde que ingresa.</p>
+                
+                <p>●Innovadora	Creará experiencias diferentes, como funciones temáticas, concursos, promociones especiales y actividades relacionadas con los estrenos.</p>
+                 <img src="img/corporativa2.jpg" alt="Logotipo de CINEMAZON"></td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section id="doc-identidad" class="doc-section">
+          <div class="doc-section-head"><span>09</span><h3>IDENTIDAD VISUAL</h3></div>
+          <h4 class="doc-subtitle">Logotipo</h4>
+          <div class="doc-image-large"><img src="img/logocine.png" alt="Logotipo de CINEMAZON"></div>
+          <div class="doc-image-secondary"><img src="img/bocetos.jpg" alt="Boceto y material original del documento"></div>
+
+          <h4 class="doc-subtitle">Colores corporativos</h4>
+          <div class="doc-table-wrap"><table class="doc-table color-table"><thead><tr><th>Color</th><th>Significado</th><th>Codigo Hexadecimal</th></tr></thead><tbody>
+            <tr><td><span class="swatch black"></span>Negro/verde muy oscuro</td><td>Elegancia, modernidad</td><td>#031611</td></tr>
+            <tr><td><span class="swatch green"></span>Verde oscuro - intenso - lima</td><td>Naturaleza y origen regional.</td><td>#057D2B - #2DAA26 - #6BC423</td></tr>
+            <tr><td><span class="swatch red"></span>Rojo/Naranja</td><td>Pasion</td><td>#E4400A</td></tr>
+            <tr><td><span class="swatch yellow"></span>Amarillo</td><td>Alegria y calidad</td><td>#F4CE14</td></tr>
+            <tr><td><span class="swatch White"></span>Blanco</td><td>Paz y pureza</td><td>#FFFFFF</td></tr>
+          </tbody></table></div>
+
+          <h4 class="doc-subtitle">Tipografía principal</h4>
+          <p>Una tipografía moderna y fácil de leer, que refleje entretenimiento y dinamismo.</p>
+          <h4 class="doc-subtitle">Elementos gráficos</h4>
+          <p>Siluetas de animales (tucan), hojas tropicales y rollo de película cinematografica.</p>
+        </section>
+
+        <section id="doc-aplicaciones" class="doc-section">
+          <div class="doc-section-head"><span>10</span><h3>APLICACIONES CORPORATIVAS</h3></div>
+          <p class="doc-lead">La identidad visual de Cinemazon se aplicará en:</p>
+          <div class="application-grid">
+            <figure><img src="img/tarjetas de presentacion.jpg" alt="Tarjetas de presentación"><figcaption>Tarjetas de presentación</figcaption></figure>
+            <figure><img src="img/vasos y empaques.jpg" alt="Vasos y empaques"><figcaption>Vasos y empaques</figcaption></figure>
+            <figure><img src="img/uniformes.jpg" alt="Uniformes"><figcaption>Uniformes</figcaption></figure>
+            <figure><img src="img/afiches.jpg" alt="Afiches"><figcaption>Afiches</figcaption></figure>
+            <figure><img src="img/redes sociales.jpg" alt="Redes sociales"><figcaption>Redes sociales</figcaption></figure>
+            <figure><img src="img/pagina web.jpg" alt="Página web"><figcaption>Página web</figcaption></figure>
+            <figure><img src="img/menu.jpg" alt="Menú"><figcaption>Menú</figcaption></figure>
+            <figure><img src="img/letrero del establecimiento.jpg" alt="Letrero del establecimiento"><figcaption>Letrero del establecimiento</figcaption></figure>
+          </div>
+          <div class="doc-highlight"><b>Ejemplo</b><p>La caja de canchita llevara el logotipo de Cinemazon, sus colores corporativos y el eslogan, integrando la temática de la selva en el diseño.</p></div>
+        </section>
+
+        <section id="doc-comunicacion" class="doc-section">
+          <div class="doc-section-head"><span>11</span><h3>COMUNICACIÓN CORPORATIVA</h3></div>
+          <div class="doc-question"><b>¿Cómo se comunicará la empresa con su público?</b><p>Utilizará un lenguaje dinamico, cercano y amigable, buscando generar emoción y conexión con los amantes del cine en la región.</p></div>
+          <h4 class="doc-subtitle">Canales</h4>
+          <div class="tag-grid"><span>✓ Facebook</span><span>✓ Instagram</span><span>✓ TikTok</span><span>✓ Página web</span><span>✓ WhatsApp</span><span>✓ Afiches</span></div>
+          <div class="communication-images"><img src="img/red facebook.jpg" alt="Aplicación de comunicación de CINEMAZON"><img src="img/red tik tok.jpg" alt="Aplicación de comunicación de CINEMAZON"></div>
+          <div class="doc-message"><small>MENSAJE PRINCIPAL</small><p>“Tu portal a la magia del cine en el corazón de la selva.”</p></div>
+          <div class="doc-slogan"><small>ESLOGAN</small><p>“El encuentro de la selva con el cine.”</p></div>
+        </section>
+
+        <section id="doc-imagen" class="doc-section">
+          <div class="doc-section-head"><span>12</span><h3>IMAGEN QUE SE DESEA PROYECTAR</h3></div>
+          <p class="doc-lead">CINEMAZON busca que el público la reconozca como cine:</p>
+          <div class="tag-grid">
+            <span>✓ Confiable</span><span>✓ De calidad</span><span>✓ Cercana</span><span>✓ Moderna</span><span>✓ Innovadora</span><span>✓ Entretenida</span><span>✓ Responsable</span>
+          </div>
+          <div class="doc-highlight"><b>¿Cómo queremos que el público recuerde a Café Andino?</b><p>Queremos que los clientes recuerden como el mejor lugar para disfrutar de los estrenos de películas, con tecnología de vanguardia y un ambiente único inspirado en la selva.</p></div>
+        </section>
+
+        <section id="doc-imagen-institucional" class="doc-section">
+          <div class="doc-section-head"><span>13</span><h3>IMAGEN INSTITUCIONAL</h3></div>
+          <div class="doc-question"><b>Percepción del cliente</b><p>CINEMAZON busca ser recordada como una opción confiable, de calidad, cercana, moderna, innovadora, entretenida y responsable.</p></div>
+          <div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Aspecto</th><th>Situación proyectada</th></tr></thead><tbody>
+            <tr><td>Fortalezas</td><td>Propuesta cinematográfica moderna, tecnología audiovisual, identidad inspirada en la selva y oferta de entretenimiento para la comunidad.</td></tr>
+            <tr><td>Aspectos por mejorar</td><td>Fortalecer la estandarización de la marca, mantener coherencia entre materiales y ampliar la comunicación digital.</td></tr>
+            <tr><td>Dimensiones de la imagen</td><td>Visual, comunicacional, experiencial y cultural.</td></tr>
+            <tr><td>Componentes de la imagen</td><td>Identidad visual, servicio, instalaciones, comunicación, aplicaciones corporativas y experiencia del cliente.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section id="doc-mejoras" class="doc-section">
+          <div class="doc-section-head"><span>14</span><h3>PROPUESTAS DE MEJORA</h3></div>
+          <div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Propuesta</th><th>Aplicación</th></tr></thead><tbody>
+            <tr><td>Estandarización de la marca</td><td>Definir criterios consistentes para logotipo, colores, tipografías, tamaños y usos en todos los soportes.</td></tr>
+            <tr><td>Material publicitario</td><td>Crear piezas coherentes para afiches, promociones, empaques, señalética y campañas de estreno.</td></tr>
+            <tr><td>Colores y tipografías</td><td>Mantener una paleta y sistema tipográfico constantes para reforzar el reconocimiento de CINEMAZON.</td></tr>
+            <tr><td>Redes sociales</td><td>Planificar contenido de estrenos, promociones, experiencia del cliente y contenido relacionado con la identidad de la Selva Central.</td></tr>
+          </tbody></table></div>
+        </section>
+
+        <section id="doc-conclusiones" class="doc-section">
+          <div class="doc-section-head"><span>15</span><h3>CONCLUSIONES</h3></div>
+          <div class="doc-question"><b>¿Por qué es importante la imagen corporativa para Café Andino?</b><p>La imagen corporativa permitiría que Cinemazon construya una identidad solida y diferenciada, facilitando la conexión emocional con el publico local y transmitiendo profesionalismo y calidad en el servicio.</p></div>
+          <div class="doc-question"><b>¿Cómo ayudará la identidad visual?</b><p>El logotipo, los colores y los elementos gráficos permitirán que los clientes reconozcan instantáneamente la marca Cinemazon en todos sus canales y aplicaciones, fortaleciendo el recuerdo de marca y la lealtad de los clientes.</p></div>
+        </section>
+
+        <div class="doc-end">CINEMAZON · IMAGEN CORPORATIVA · SATIPO, JUNÍN</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <section id="ubicacion" class="py-16 bg-darkcard/30 border-t border-darkborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Info Left -->
+                <div>
+                    <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">Nuestra Sede</span>
+                    <h2 class="text-3xl font-black text-white tracking-tight mt-1 mb-6">Visítanos en Satipo, Junín</h2>
+                    
+                    <div class="space-y-4 text-sm text-gray-300 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Dirección Central</h4>
+                                <p class="text-gray-400 text-xs">Av. Raymondi cda 5 / Jr. Julio C. Tello, Satipo - Junín, Perú.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
+                                <i class="fa-solid fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Horario de Atención</h4>
+                                <p class="text-gray-400 text-xs">Lunes a Domingo: 2:00 PM - 11:30 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Consultas & Whatsapp</h4>
+                                <p class="text-gray-400 text-xs">+51 964 123 456 • informes@cinemazon.pe</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">Síguenos:</span>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 sm:p-8">
+                    <h3 class="text-xl font-bold text-white mb-2">Envíanos un Mensaje</h3>
+                    <p class="text-gray-400 text-xs mb-6">¿Tienes consultas sobre reservas grupales o promociones? Escríbenos directamente.</p>
+
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Nombre Completo</label>
+                            <input type="text" required placeholder="Tu nombre" class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Correo Electrónico</label>
+                            <input type="email" required placeholder="ejemplo@correo.com" class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Mensaje</label>
+                            <textarea rows="3" required placeholder="Escribe tu mensaje aquí..." class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-xs">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkbg border-t border-darkborder py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">                <div class="w-8 h-8">
+                    <!-- IMAGEN PERSONALIZABLE: usa el mismo logo en img/logo-cinemazon.png -->
+                    <img src="img/logocine.png"
+                         class="w-full h-full object-contain"
+                         alt="Logo CINEMAZON">
+                </div>
+                <div>
+                    <span class="text-base font-black tracking-wider text-white">CINEMA<span class="text-amazon-500">ZON</span></span>
+                    <p class="text-gray-500 text-[11px]">© 2026 CINEMAZON PERU S.A.C. | Todos los derechos reservados.</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6 text-xs text-gray-400">
+                <a href="#" class="hover:text-amazon-500 transition-colors">Términos y Condiciones</a>
+                <a href="#" class="hover:text-amazon-500 transition-colors">Política de Privacidad</a>
+                <a href="#" onclick="alert('Accediendo al Libro de Reclamaciones Virtual de Cinemazon Satipo...')" class="hover:text-amazon-500 transition-colors text-emerald-400 font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-book"></i> Libro de Reclamaciones
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE SELECCIÓN DE ASIENTOS -->
+    <div id="seatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-darkcard border border-darkborder rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeSeatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="mb-6">
+                <span class="text-amazon-500 text-xs font-black uppercase tracking-wider">Reserva de Entradas</span>
+                <h3 id="modalMovieTitle" class="text-2xl font-bold text-white mt-1">Aventura Amazónica 3D</h3>
+                <p id="modalMovieDetails" class="text-xs text-gray-400 mt-1">SALA 1 (Satipo) • Horario: <span id="modalShowtime" class="text-emerald-400 font-bold">18:30</span> • Entrada General: S/. 15.00</p>
+            </div>
+
+            <!-- Screen Graphic -->
+            <div class="w-full mb-8 text-center screen-curved">
+                <div class="w-3/4 mx-auto h-2.5 bg-gradient-to-r from-amazon-500/20 via-amazon-500 to-amazon-500/20 rounded-full screen-inner mb-2"></div>
+                <span class="text-[10px] uppercase font-black tracking-widest text-gray-500">PANTALLA DE CINE</span>
+            </div>
+
+            <!-- Seat Layout Grid -->
+            <div class="flex flex-col items-center gap-3 mb-8" id="seatGrid">
+                <!-- Generated via JS -->
+            </div>
+
+            <!-- Legend -->
+            <div class="flex justify-center items-center gap-6 text-xs text-gray-400 mb-6 border-t border-b border-darkborder py-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-darkbg border border-gray-600 inline-block"></span> Disponible
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-amazon-500 inline-block"></span> Seleccionado
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-md bg-gray-700 opacity-50 cursor-not-allowed inline-block"></span> Ocupado
+                </div>
+            </div>
+
+            <!-- Total and Action -->
+            <div class="flex items-center justify-between pt-2">
+                <div>
+                    <span class="text-xs text-gray-400 block">Asientos: <span id="selectedSeatsCount" class="text-white font-bold">0</span></span>
+                    <span class="text-xl font-black text-amazon-500">Total: S/. <span id="seatTotalPrice">0.00</span></span>
+                </div>
+                <button onclick="confirmSeatBooking()" class="bg-amazon-500 hover:bg-amazon-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-xs">
+                    Confirmar y Agregar al Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOPPING CART SIDEBAR DRAWER -->
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-darkcard border-l border-darkborder shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Sidebar Header -->
+        <div class="p-5 border-b border-darkborder flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-amazon-500 text-xl"></i>
+                <h3 class="text-lg font-bold text-white">Tu Carrito de Compra</h3>
+            </div>
+            <button onclick="toggleCartSidebar(false)" class="text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 space-y-4">
+            <div id="emptyCartMsg" class="text-center py-16 text-gray-500">
+                <i class="fa-solid fa-cart-flatbed text-4xl mb-3 block"></i>
+                <p class="text-sm">Tu carrito está vacío.</p>
+                <p class="text-xs text-gray-600 mt-1">Selecciona entradas o combos para comenzar.</p>
+            </div>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="p-5 border-t border-darkborder bg-darkbg space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-400">Subtotal</span>
+                <span class="text-white font-bold" id="cartSubtotal">S/. 0.00</span>
+            </div>
+            <div class="flex justify-between items-center text-base">
+                <span class="text-white font-black">Total a Pagar</span>
+                <span class="text-amazon-500 font-black text-xl" id="cartTotal">S/. 0.00</span>
+            </div>
+
+            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-center block text-xs uppercase tracking-wider">
+                Procesar Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT / PAYMENT MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-darkcard border border-darkborder rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="text-xl font-bold text-white mb-1">Finalizar Compra</h3>
+            <p class="text-xs text-gray-400 mb-6">Emisión directa de boleto digital para Cinemazon Satipo.</p>
+
+            <!-- Payment Methods -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button onclick="selectPayment(this, 'yape')" class="pay-method border border-amazon-500 bg-amazon-500/10 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
+                    <span class="font-bold text-purple-400 text-xs">Yape</span>
+                </button>
+                <button onclick="selectPayment(this, 'plin')" class="pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
+                    <span class="font-bold text-cyan-400 text-xs">Plin</span>
+                </button>
+                <button onclick="selectPayment(this, 'card')" class="pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
+                    <span class="font-bold text-emerald-400 text-xs">Tarjeta</span>
+                </button>
+            </div>
+
+            <!-- Simulated QR code for Yape/Plin -->
+            <div id="qrContainer" class="bg-darkbg border border-darkborder rounded-2xl p-4 text-center mb-6">
+                <div class="w-32 h-32 bg-white p-2 mx-auto rounded-xl mb-2 flex items-center justify-center">
+                    <i class="fa-solid fa-qrcode text-6xl text-gray-900"></i>
+                </div>
+                <p class="text-xs text-gray-300 font-bold">Escanea con Yape / Plin al +51 964 123 456</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Monto total: <span id="checkoutAmount" class="font-extrabold text-amazon-500">S/. 0.00</span></p>
+            </div>
+
+            <button onclick="completePurchase()" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-xs uppercase tracking-wider">
+                Confirmar Pago y Obtener Entrada QR
+            </button>
+        </div>
+    </div>
+
+    <!-- DIGITAL TICKET MODAL -->
+    <div id="ticketModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-gradient-to-b from-darkcard to-darkbg border border-amazon-500/50 rounded-3xl max-w-sm w-full p-6 relative shadow-2xl ticket-cut text-center">
+            <button onclick="closeTicketModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Ticket Logo Header -->            <div class="w-12 h-12 mx-auto mb-2">
+                <!-- IMAGEN PERSONALIZABLE: usa el mismo logo en img/logo-cinemazon.png -->
+                <img src="img/logocine.png"
+                     class="w-full h-full object-contain"
+                     alt="Logo CINEMAZON">
+            </div>
+            <h4 class="text-lg font-black text-white tracking-wider">CINEMAZON</h4>
+            <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest block mb-4">Sede Satipo • Entrada Digital</span>
+
+            <div class="border-t border-b border-dashed border-darkborder py-4 my-2 text-left space-y-2 text-xs">
+                <p class="text-gray-400">Cliente: <span class="text-white font-bold">Visitante Satipo</span></p>
+                <p class="text-gray-400">Sede: <span class="text-white font-bold">Av. Raymondi, Satipo</span></p>
+                <div id="ticketDetailsList" class="space-y-1 text-emerald-300 font-bold pt-2 border-t border-darkborder"></div>
+            </div>
+
+            <!-- Simulated QR -->
+            <div class="my-4 bg-white p-3 rounded-xl w-36 h-36 mx-auto flex items-center justify-center">
+                <i class="fa-solid fa-qrcode text-7xl text-gray-900"></i>
+            </div>
+            <p class="text-[10px] text-gray-400 mb-4">Presenta este código QR en la entrada del cine o dulcería.</p>
+
+            <button onclick="closeTicketModal()" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-2.5 rounded-xl text-xs">
+                Descargar / Finalizar
+            </button>
+        </div>
+    </div>
+
+    <!-- TRAILER MODAL -->
+    <div id="trailerModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="max-w-4xl w-full aspect-video relative bg-black rounded-2xl overflow-hidden border border-darkborder">
+            <button onclick="closeTrailerModal()" class="absolute top-3 right-3 text-white bg-black/60 p-2 rounded-full hover:bg-red-600 transition-all z-10">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <iframe id="trailerFrame" class="w-full h-full" src="" title="Tráiler de película" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Hero Slide Data
+        const heroSlides = [
+            {
+                title: "AVENGERS: DOOMSDAY",
+                duration: "135 min",
+                genre: "Acción / Fantasía",
+                description: "Un nuevo orden se alza desde las cenizas. El destino del multiverso está en sus manos. Disfruta de Avengers: Doomsday en Cinemazon.",
+                bg: "img/hero-1.jpg",
+                video: "videos/avengers.mp4",
+                trailer: "https://www.youtube.com/embed/iFl4YeX6jmc"
+            },
+            {
+                title: "LA GUERRA DEL MAÑANA",
+                duration: "2h 11min",
+                genre: "Acción / Ciencia ficción",
+                description: "Viajeros del tiempo llegan desde 2051 para advertir que la humanidad está perdiendo una guerra contra una especie alienígena. La batalla por el mañana comienza hoy.",
+                bg: "img/hero-2.jpg",
+                video: "videos/laguerradelmañana.mp4",
+                trailer: "https://www.youtube.com/embed/QPistcpGB8o"
+            },
+            {
+                title: "THE SUPER MARIO BROS. MOVIE",
+                duration: "1h 32min",
+                genre: "Animación / Aventura",
+                description: "Mario y Peach se embarcan en una aventura por el Reino Champiñón para enfrentarse a Bowser y salvar su mundo.",
+                bg: "img/hero-3.jpg",
+                video: "videos/mariobross.mp4",
+                trailer: "https://www.youtube.com/embed/7m5SDPQe1Z8"
+            }
+        ];
+
+        let currentHeroIndex = 0;
+        let cart = [];
+
+        // Inicializar el video de fondo de la primera película.
+        window.addEventListener('load', () => {
+            changeHero(0);
+        });
+        let currentBooking = { movieId: '', movieTitle: '', showtime: '', seats: [] };
+        const TICKET_PRICE = 15.00;
+
+        // Change Hero Slide
+        function changeHero(index) {
+            currentHeroIndex = index;
+            const slide = heroSlides[index];
+            document.getElementById('heroTitle').textContent = slide.title;
+            document.getElementById('heroDuration').textContent = slide.duration;
+            document.getElementById('heroGenre').textContent = slide.genre;
+            document.getElementById('heroDescription').textContent = slide.description;
+            document.getElementById('heroBgImage').src = slide.bg;
+
+            // Cambiar al video local de la película actual.
+            // Los videos están dentro de la carpeta "videos" del proyecto.
+            const heroBgVideo = document.getElementById('heroBgVideo');
+            if (heroBgVideo && slide.video) {
+                heroBgVideo.pause();
+                heroBgVideo.src = slide.video;
+                heroBgVideo.load();
+                heroBgVideo.muted = true;
+                heroBgVideo.loop = true;
+                const playPromise = heroBgVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {});
+                }
+            }
+
+            const dots = document.getElementById('heroDots').children;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = i === index 
+                    ? "w-3 h-3 rounded-full bg-amazon-500 transition-all" 
+                    : "w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all";
+            }
+        }
+
+        // Auto Cycle Hero
+        setInterval(() => {
+            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
+            changeHero(currentHeroIndex);
+        }, 7000);
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Live Movie Search Filter
+        function handleSearch() {
+            const query = (document.getElementById('searchInput').value || '').toLowerCase();
+            const cards = document.querySelectorAll('.movie-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Date Tabs Filter
+        function filterDate(btn, type) {
+            document.querySelectorAll('.date-tab').forEach(b => {
+                b.className = "date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all";
+            });
+            btn.className = "date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md";
+            showToast("Horarios actualizados para la fecha seleccionada.");
+        }
+
+        // Snack Category Filter
+        function filterSnacks(category) {
+            const cards = document.querySelectorAll('.snack-card');
+            cards.forEach(card => {
+                if (category === 'todos' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.snack-tab').forEach(b => {
+                b.className = "snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all";
+            });
+            event.currentTarget.className = "snack-tab bg-amazon-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all";
+        }
+
+        // Seat Modal Logic
+        function openSeatModal(movieId, title, time) {
+            currentBooking = { movieId, movieTitle: title, showtime: time, seats: [] };
+            document.getElementById('modalMovieTitle').textContent = title;
+            document.getElementById('modalShowtime').textContent = time;
+            document.getElementById('selectedSeatsCount').textContent = "0";
+            document.getElementById('seatTotalPrice').textContent = "0.00";
+
+            generateSeatGrid();
+            document.getElementById('seatModal').classList.remove('hidden');
+        }
+
+        function closeSeatModal() {
+            document.getElementById('seatModal').classList.add('hidden');
+        }
+
+        function generateSeatGrid() {
+            const container = document.getElementById('seatGrid');
+            container.innerHTML = '';
+
+            const rows = ['A', 'B', 'C', 'D', 'E'];
+            const cols = 8;
+
+            rows.forEach(row => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = "flex items-center gap-2";
+
+                const label = document.createElement('span');
+                label.className = "text-xs font-bold text-gray-500 w-4 text-center";
+                label.textContent = row;
+                rowDiv.appendChild(label);
+
+                for (let c = 1; c <= cols; c++) {
+                    const seatId = `${row}${c}`;
+                    const isOccupied = (row === 'B' && (c === 3 || c === 4)) || (row === 'D' && c === 5); // Simulated reserved
+
+                    const btn = document.createElement('button');
+                    btn.setAttribute('data-seat', seatId);
+
+                    if (isOccupied) {
+                        btn.className = "w-7 h-7 rounded-md bg-gray-700 opacity-50 cursor-not-allowed text-[10px] font-bold text-gray-500 flex items-center justify-center";
+                        btn.disabled = true;
+                    } else {
+                        btn.className = "w-7 h-7 rounded-md bg-darkbg border border-gray-600 hover:border-amazon-500 text-[10px] font-bold text-gray-300 flex items-center justify-center transition-all seat-btn";
+                        btn.onclick = () => toggleSeat(seatId, btn);
+                    }
+
+                    btn.textContent = c;
+                    rowDiv.appendChild(btn);
+                }
+                container.appendChild(rowDiv);
+            });
+        }
+
+        function toggleSeat(seatId, element) {
+            const index = currentBooking.seats.indexOf(seatId);
+            if (index > -1) {
+                currentBooking.seats.splice(index, 1);
+                element.className = "w-7 h-7 rounded-md bg-darkbg border border-gray-600 hover:border-amazon-500 text-[10px] font-bold text-gray-300 flex items-center justify-center transition-all seat-btn";
+            } else {
+                currentBooking.seats.push(seatId);
+                element.className = "w-7 h-7 rounded-md bg-amazon-500 text-white font-bold flex items-center justify-center transition-all seat-btn glow-green";
+            }
+
+            const count = currentBooking.seats.length;
+            document.getElementById('selectedSeatsCount').textContent = count;
+            document.getElementById('seatTotalPrice').textContent = (count * TICKET_PRICE).toFixed(2);
+        }
+
+        function confirmSeatBooking() {
+            if (currentBooking.seats.length === 0) {
+                showToast("Por favor selecciona al menos un asiento.");
+                return;
+            }
+
+            const itemTitle = `Entrada: ${currentBooking.movieTitle} (${currentBooking.showtime}) [${currentBooking.seats.join(', ')}]`;
+            const itemPrice = currentBooking.seats.length * TICKET_PRICE;
+
+            addToCart(itemTitle, itemPrice, 'ticket');
+            closeSeatModal();
+            toggleCartSidebar(true);
+        }
+
+        // Cart Management
+        function addToCart(name, price, type) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1, type });
+            }
+            updateCartUI();
+            showToast(`Agregado al carrito: ${name}`);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function changeQty(name, delta) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badge = document.getElementById('cartBadge');
+            const emptyMsg = document.getElementById('emptyCartMsg');
+
+            const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+            if (totalItems > 0) {
+                badge.textContent = totalItems;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            document.getElementById('headerCartTotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.appendChild(emptyMsg);
+            } else {
+                cart.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = "bg-darkbg border border-darkborder rounded-xl p-3 flex items-center justify-between gap-3";
+                    div.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-white leading-tight">${item.name}</h4>
+                            <span class="text-xs text-amazon-500 font-extrabold">S/. ${(item.price * item.qty).toFixed(2)}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-darkcard px-2 py-1 rounded-lg border border-darkborder">
+                            <button onclick="changeQty('${item.name}', -1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">-</button>
+                            <span class="text-xs font-bold text-white">${item.qty}</span>
+                            <button onclick="changeQty('${item.name}', 1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">+</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            document.getElementById('cartSubtotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
+            document.getElementById('cartTotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
+            document.getElementById('checkoutAmount').textContent = `S/. ${totalPrice.toFixed(2)}`;
+        }
+
+        function toggleCartSidebar(open = null) {
+            const sidebar = document.getElementById('cartSidebar');
+            if (open === true) {
+                sidebar.classList.remove('translate-x-full');
+            } else if (open === false) {
+                sidebar.classList.add('translate-x-full');
+            } else {
+                sidebar.classList.toggle('translate-x-full');
+            }
+        }
+
+        // Payment & Modal Controls
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                showToast("Tu carrito está vacío.");
+                return;
+            }
+            toggleCartSidebar(false);
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function selectPayment(btn, type) {
+            document.querySelectorAll('.pay-method').forEach(b => {
+                b.className = "pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all";
+            });
+            btn.className = "pay-method border border-amazon-500 bg-amazon-500/10 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all";
+        }
+
+        function completePurchase() {
+            const list = document.getElementById('ticketDetailsList');
+            list.innerHTML = '';
+            cart.forEach(item => {
+                const p = document.createElement('p');
+                p.textContent = `• ${item.qty}x ${item.name}`;
+                list.appendChild(p);
+            });
+
+            closeCheckoutModal();
+            document.getElementById('ticketModal').classList.remove('hidden');
+            cart = [];
+            updateCartUI();
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').classList.add('hidden');
+        }
+
+        function openTrailerModal(url) {
+            document.getElementById('trailerFrame').src = url;
+            document.getElementById('trailerModal').classList.remove('hidden');
+        }
+
+        function closeTrailerModal() {
+            document.getElementById('trailerFrame').src = "";
+            document.getElementById('trailerModal').classList.add('hidden');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast("¡Gracias por contactarnos! Responderemos pronto.");
+            e.target.reset();
+        }
+
+        // Toast Helper Notification
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = "bg-darkcard border border-amazon-500/80 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl pointer-events-auto flex items-center gap-2 transform transition-all duration-300 translate-x-10 opacity-0";
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-amazon-500 text-sm"></i> ${message}`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
