@@ -102,6 +102,7 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            cursor: pointer;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -586,7 +587,7 @@
                 <div class="doc-grid">
                     <div class="doc-card">
                         <h4>Datos de la Empresa</h4>
-                        <p><strong>Razon Social:</strong> CINEMAZON PERU S.A.C.</p>
+                        <p><strong>Razón Social:</strong> CINEMAZON PERU S.A.C.</p>
                         <p><strong>Ubicación:</strong> Satipo, Junín, Perú.</p>
                     </div>
                     <div class="doc-card">
@@ -675,7 +676,7 @@
                 <div class="doc-grid">
                     <div class="doc-card">
                         <h4>Percepción del Cliente</h4>
-                        <p>Marca moderna, limpia, moderna y con gran pertenencia a la Selva Central.</p>
+                        <p>Marca moderna, limpia y con gran pertenencia a la Selva Central.</p>
                     </div>
                     <div class="doc-card">
                         <h4>Fortalezas</h4>
@@ -842,7 +843,6 @@
             
             document.getElementById(sectionId + '-section').classList.add('active');
             
-            // Highlight nav link
             const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(a => a.getAttribute('onclick').includes(sectionId));
             if(activeLink) activeLink.classList.add('active');
         }
@@ -852,7 +852,9 @@
             document.querySelectorAll('.doc-tab-btn').forEach(btn => btn.classList.remove('active'));
             
             document.getElementById('tab-' + tabId).classList.add('active');
-            event.target.classList.add('active');
+            if(event && event.target) {
+                event.target.classList.add('active');
+            }
         }
 
         function openSeatModal(movie, price) {
