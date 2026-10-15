@@ -1,972 +1,927 @@
 <!DOCTYPE html>
+
 <html lang="es" class="dark scroll-smooth">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CINEMAZON - Cine Selva Central | Satipo, Junín</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <script>
+
         tailwind.config = {
+
             darkMode: 'class',
+
             theme: {
+
                 extend: {
+
                     colors: {
+
                         amazon: {
+
                             50: '#e6f9f0',
+
                             100: '#c3f0d8',
+
                             400: '#10b981',
+
                             500: '#00a859',
+
                             600: '#008a48',
+
                             700: '#006b37',
+
                             800: '#034d28',
+
                             900: '#01321a'
+
                         },
+
                         gold: {
+
                             400: '#fbbf24',
+
                             500: '#f59e0b',
+
                             600: '#d97706'
+
                         },
+
                         darkbg: '#0c1015',
+
                         darkcard: '#141a23',
+
                         darkborder: '#222d3d'
+
                     },
+
                     fontFamily: {
+
                         sans: ['Plus Jakarta Sans', 'sans-serif']
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
     <style>
+
         /* Custom styles & scrollbar */
+
         ::-webkit-scrollbar {
+
             width: 8px;
+
             height: 8px;
+
         }
+
         ::-webkit-scrollbar-track {
+
             background: #0c1015;
+
         }
+
         ::-webkit-scrollbar-thumb {
+
             background: #222d3d;
+
             border-radius: 4px;
+
         }
+
         ::-webkit-scrollbar-thumb:hover {
+
             background: #00a859;
+
         }
+
         .hero-gradient {
+
             background: linear-gradient(180deg, rgba(12, 16, 21, 0.3) 0%, rgba(12, 16, 21, 0.85) 75%, #0c1015 100%);
+
         }
+
         .glow-green {
+
             box-shadow: 0 0 25px rgba(0, 168, 89, 0.4);
+
         }
+
         .glow-gold {
+
             box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+
         }
+
         .screen-curved {
+
             perspective: 500px;
+
         }
+
         .screen-inner {
+
             transform: rotateX(-12deg);
+
             box-shadow: 0 15px 40px rgba(0, 168, 89, 0.45);
+
         }
+
         .ticket-cut {
+
             mask-image: radial-gradient(circle at 0% 50%, transparent 12px, black 13px), radial-gradient(circle at 100% 50%, transparent 12px, black 13px);
+
             mask-composite: intersect;
+
         }
+
         /* Proyecto / documento Word */
+
         .project-item {
+
             display: block;
+
             padding: 0.65rem 0.75rem;
+
             border-radius: 0.75rem;
+
             color: #9ca3af;
+
             font-size: 0.82rem;
+
             font-weight: 600;
+
             transition: all 0.2s ease;
+
         }
+
         .project-item:hover {
+
             color: #fff;
+
             background: rgba(0, 168, 89, 0.10);
+
             transform: translateX(3px);
+
         }
+
         .project-content-card {
+
             scroll-margin-top: 100px;
+
             padding: 1.25rem;
+
             border: 1px solid #222d3d;
+
             border-radius: 1rem;
+
             background: rgba(20, 26, 35, 0.72);
+
             min-height: 130px;
+
             transition: border-color 0.2s ease, transform 0.2s ease;
+
         }
+
         .project-content-card:hover {
+
             border-color: rgba(0, 168, 89, 0.45);
+
             transform: translateY(-2px);
+
         }
+
         .project-content-card h4 {
+
             color: #fff;
+
             font-weight: 800;
+
             font-size: 0.95rem;
+
             margin-bottom: 0.55rem;
+
         }
+
         .project-content-card p {
+
             color: #6b7280;
+
             font-size: 0.8rem;
+
             line-height: 1.65;
+
         }
 
-        /* ===== Documento corporativo CINEMAZON ===== */
-        .doc-shell{max-width:1100px;margin:auto}
-        .doc-cover{position:relative;min-height:390px;border:1px solid #26332d;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(35,197,94,.22),transparent 35%),radial-gradient(circle at 85% 75%,rgba(234,179,8,.18),transparent 35%),#050806;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-        .doc-cover:before{content:"";position:absolute;inset:18px;border:1px solid rgba(234,179,8,.2);border-radius:20px}
-        .doc-cover-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(22,163,74,.12);filter:blur(30px)}
-        .doc-cover-content{position:relative;text-align:center;padding:45px}
-        .doc-kicker{font-size:11px;letter-spacing:.35em;font-weight:800;color:#d4af37}
-        .doc-cover h3{font-size:clamp(42px,7vw,82px);line-height:.92;font-weight:900;letter-spacing:-.04em;color:#fff;margin:18px 0}
-        .doc-cover h3 span{color:#d4af37}
-        .doc-cover p{color:#aab5af;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
-        .doc-cover-line{width:100px;height:2px;background:#d4af37;margin:25px auto}
-        .doc-cover small{color:#87938c;letter-spacing:.15em}
-        .doc-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 28px;padding:15px;background:#0c1310;border:1px solid #26332d;border-radius:18px;position:sticky;top:12px;z-index:20;backdrop-filter:blur(12px)}
-        .doc-nav a{font-size:11px;font-weight:800;color:#9ca8a1;padding:9px 12px;border-radius:10px;transition:.2s}
-        .doc-nav a:hover{background:#152019;color:#d4af37}
-        .doc-paper{background:#f8f7f3;color:#202522;border-radius:4px;box-shadow:0 25px 70px rgba(0,0,0,.35);padding:clamp(25px,5vw,70px)}
-        .doc-section{padding:0 0 52px;margin-bottom:52px;border-bottom:1px solid #dddeda;scroll-margin-top:90px}
-        .doc-section:last-of-type{border-bottom:0;margin-bottom:0}
-        .doc-section-head{display:flex;align-items:center;gap:14px;margin-bottom:25px}
-        .doc-section-head span{font-size:12px;font-weight:900;color:#177245;letter-spacing:.15em}
-        .doc-section-head h3{font-size:clamp(19px,3vw,29px);letter-spacing:.03em;margin:0;color:#18201c;font-weight:900}
-        .doc-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#d8dbd7;border:1px solid #d8dbd7}
-        .doc-info-grid>div{background:#fff;padding:18px 20px}
-        .doc-info-grid .wide{grid-column:1/-1}
-        .doc-info-grid b,.doc-question b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#177245;margin-bottom:7px}
-        .doc-paper p{font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.75;color:#414944;margin:0}
-        .doc-question{margin-bottom:22px}
-        .doc-question p{margin-top:7px}
-        .doc-paper blockquote{margin:0;padding:26px 28px;border-left:4px solid #d4af37;background:#f0f2ed;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.8;color:#27302b}
-        .doc-table-wrap{overflow-x:auto}
-        .doc-table{width:100%;border-collapse:collapse;background:#fff}
-        .doc-table th{background:#17231d;color:#fff;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:15px}
-        .doc-table td{padding:16px;border:1px solid #dfe2de;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55}
-        .doc-table tr:nth-child(even) td{background:#f6f7f4}
-        .doc-subtitle{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#177245;margin:28px 0 10px;font-weight:900}
-        .doc-image-large{background:#eef1ed;border:1px solid #d8ddd8;padding:15px;display:flex;justify-content:center;align-items:center}
-        .doc-image-large img{max-width:100%;max-height:620px;object-fit:contain}
-        .tag-grid{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0 22px}
-        .tag-grid span{background:#e8efe9;border:1px solid #cbd9ce;color:#145c39;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800}
-        .doc-highlight{background:#f0f3ef;border:1px solid #d6ddd7;border-radius:12px;padding:20px 22px;margin-top:20px}
-        .doc-highlight b{display:block;color:#177245;text-transform:uppercase;font-size:11px;letter-spacing:.1em;margin-bottom:8px}
-        .application-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-        .application-grid figure{margin:0;background:#fff;border:1px solid #d9ddd9;padding:10px;border-radius:12px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
-        .application-grid img{width:100%;height:250px;object-fit:contain;background:#f1f3f0;border-radius:8px}
-        .application-grid figcaption{text-align:center;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:#39433e;padding:12px 4px 6px}
-        .doc-message,.doc-slogan{margin-top:20px;padding:22px;border-radius:14px;text-align:center}
-        .doc-message{background:#17231d;color:#fff}.doc-slogan{background:#d4af37;color:#161a17}
-        .doc-message small,.doc-slogan small{font-size:10px;letter-spacing:.2em;font-weight:900;opacity:.8}
-        .doc-message p,.doc-slogan p{font-family:Georgia,'Times New Roman',serif;font-size:21px;margin-top:8px;color:inherit}
-        .doc-end{text-align:center;border-top:1px solid #d8dbd7;padding-top:28px;margin-top:25px;color:#77817b;font-size:10px;font-weight:900;letter-spacing:.2em}
-        .swatch{display:inline-block;width:17px;height:17px;border-radius:50%;vertical-align:-4px;margin-right:8px;border:1px solid #bbb}.swatch.black{background:#111}.swatch.green{background:#16803f}.swatch.red{background:#b91c1c}.swatch.yellow{background:#eab308}
-        @media(max-width:700px){.doc-info-grid{grid-template-columns:1fr}.doc-info-grid .wide{grid-column:auto}.application-grid{grid-template-columns:1fr}.application-grid img{height:auto;max-height:500px}.doc-paper{padding:24px 17px}.doc-nav{position:static}.doc-cover{min-height:320px}.doc-cover-content{padding:30px 15px}.doc-paper p{font-size:15px}}
-        .doc-image-secondary{margin:14px auto 0;max-width:500px;background:#eef1ed;border:1px solid #d8ddd8;padding:10px}.doc-image-secondary img{display:block;width:100%;max-height:420px;object-fit:contain}.communication-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.communication-images img{width:100%;max-height:520px;object-fit:contain;background:#eef1ed;border:1px solid #d8ddd8;border-radius:10px}@media(max-width:700px){.communication-images{grid-template-columns:1fr}}
-
-        /* ===== Menú jerárquico del proyecto CINEMAZON ===== */
-        .inicio-panel{min-width:235px}.inicio-category-link{display:block;width:100%;padding:10px 12px;border-radius:10px;color:#d1d5db;font-size:12px;font-weight:800;text-align:left;transition:background .18s ease,color .18s ease}.inicio-category-link:hover,.inicio-category-link:focus{background:rgba(0,168,89,.12);color:#fff;outline:none}.doc-nav{display:none!important}
-        .project-menu{position:relative}
-        .project-menu-panel{position:absolute;top:calc(100% + 12px);left:0;min-width:250px;background:#101820;border:1px solid #263342;border-radius:14px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.2s ease;z-index:80}
-        .project-menu:hover .project-menu-panel,.project-menu:focus-within .project-menu-panel{opacity:1;visibility:visible;transform:translateY(0)}
-        .project-menu-panel a{display:block;padding:10px 12px;border-radius:10px;color:#b8c0c9;font-size:12px;font-weight:700;transition:.2s}
-        .project-menu-panel a:hover{background:rgba(0,168,89,.12);color:#fff;transform:translateX(3px)}
-        .project-menu-label{display:flex;align-items:center;gap:7px;cursor:pointer;color:#d1d5db;transition:.2s}
-        .project-menu-label:hover{color:#10b981}
-        .project-menu-group{padding:7px 6px 5px;margin:2px 0;border-bottom:1px solid #25303c}
-        .project-menu-group:last-child{border-bottom:0}
-        .project-menu-group-title{display:block;padding:5px 6px 7px;color:#fbbf24;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
-        .project-menu-group a{padding:8px 9px;font-size:11px}
-        .mobile-project-group{border:1px solid #25303c;border-radius:12px;background:#101820;overflow:hidden}
-        .mobile-project-group summary{list-style:none;cursor:pointer;padding:11px 12px;color:#d1d5db;font-size:12px;font-weight:800}
-        .mobile-project-group summary::-webkit-details-marker{display:none}
-        .mobile-project-group[open] summary{color:#10b981;border-bottom:1px solid #25303c}
-        .mobile-project-links{padding:5px 8px 8px}
-        .mobile-project-links a{display:block;padding:8px 8px;color:#9ca3af;font-size:11px;font-weight:600;border-radius:8px}
-        .mobile-project-links a:hover{background:rgba(0,168,89,.1);color:#fff}
     </style>
+
+    <!--
+
+        ==========================================
+
+        IMÁGENES PERSONALIZABLES DE CINEMAZON
+
+        ==========================================
+
+        Coloca tus archivos dentro de la carpeta "img".
+
+        El diseño no necesita cambiarse; solo reemplaza estos archivos:
+
+
+
+        img/logo-cinemazon.png  -> Logo
+
+        img/hero-1.jpg          -> Fondo principal / película 1
+
+        img/hero-2.jpg          -> Fondo principal / película 2
+
+        img/hero-3.jpg          -> Fondo principal / película 3
+
+        img/pelicula-1.jpg      -> Poster película 1
+
+        img/pelicula-2.jpg      -> Poster película 2
+
+        img/pelicula-3.jpg      -> Poster película 3
+
+        img/combo-pareja.png    -> Imagen Combo Pareja
+
+        img/combo-selva.png     -> Imagen Combo Selva Central
+
+        img/canchita-xl.png     -> Imagen Canchita Balde XL
+
+
+
+        Puedes reemplazar un archivo por otro manteniendo exactamente el mismo nombre.
+
+        No necesitas tocar HTML, CSS ni JavaScript.
+
+        ==========================================
+
+    -->
+
+<style>
+
+/* ===== Documento corporativo CINEMAZON ===== */
+
+.doc-shell{max-width:1100px;margin:auto}
+
+.doc-cover{position:relative;min-height:390px;border:1px solid #26332d;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(35,197,94,.22),transparent 35%),radial-gradient(circle at 85% 75%,rgba(234,179,8,.18),transparent 35%),#050806;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+
+.doc-cover:before{content:"";position:absolute;inset:18px;border:1px solid rgba(234,179,8,.2);border-radius:20px}
+
+.doc-cover-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(22,163,74,.12);filter:blur(30px)}
+
+.doc-cover-content{position:relative;text-align:center;padding:45px}
+
+.doc-kicker{font-size:11px;letter-spacing:.35em;font-weight:800;color:#d4af37}
+
+.doc-cover h3{font-size:clamp(42px,7vw,82px);line-height:.92;font-weight:900;letter-spacing:-.04em;color:#fff;margin:18px 0}
+
+.doc-cover h3 span{color:#d4af37}
+
+.doc-cover p{color:#aab5af;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+
+.doc-cover-line{width:100px;height:2px;background:#d4af37;margin:25px auto}
+
+.doc-cover small{color:#87938c;letter-spacing:.15em}
+
+.doc-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 28px;padding:15px;background:#0c1310;border:1px solid #26332d;border-radius:18px;position:sticky;top:12px;z-index:20;backdrop-filter:blur(12px)}
+
+.doc-nav a{font-size:11px;font-weight:800;color:#9ca8a1;padding:9px 12px;border-radius:10px;transition:.2s}
+
+.doc-nav a:hover{background:#152019;color:#d4af37}
+
+.doc-paper{background:#f8f7f3;color:#202522;border-radius:4px;box-shadow:0 25px 70px rgba(0,0,0,.35);padding:clamp(25px,5vw,70px)}
+
+.doc-section{padding:0 0 52px;margin-bottom:52px;border-bottom:1px solid #dddeda;scroll-margin-top:90px}
+
+.doc-section:last-of-type{border-bottom:0;margin-bottom:0}
+
+.doc-section-head{display:flex;align-items:center;gap:14px;margin-bottom:25px}
+
+.doc-section-head span{font-size:12px;font-weight:900;color:#177245;letter-spacing:.15em}
+
+.doc-section-head h3{font-size:clamp(19px,3vw,29px);letter-spacing:.03em;margin:0;color:#18201c;font-weight:900}
+
+.doc-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#d8dbd7;border:1px solid #d8dbd7}
+
+.doc-info-grid>div{background:#fff;padding:18px 20px}
+
+.doc-info-grid .wide{grid-column:1/-1}
+
+.doc-info-grid b,.doc-question b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#177245;margin-bottom:7px}
+
+.doc-paper p{font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.75;color:#414944;margin:0}
+
+.doc-question{margin-bottom:22px}
+
+.doc-question p{margin-top:7px}
+
+.doc-paper blockquote{margin:0;padding:26px 28px;border-left:4px solid #d4af37;background:#f0f2ed;font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.8;color:#27302b}
+
+.doc-table-wrap{overflow-x:auto}
+
+.doc-table{width:100%;border-collapse:collapse;background:#fff}
+
+.doc-table th{background:#17231d;color:#fff;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:15px}
+
+.doc-table td{padding:16px;border:1px solid #dfe2de;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55}
+
+.doc-table tr:nth-child(even) td{background:#f6f7f4}
+
+.doc-subtitle{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#177245;margin:28px 0 10px;font-weight:900}
+
+.doc-image-large{background:#eef1ed;border:1px solid #d8ddd8;padding:15px;display:flex;justify-content:center;align-items:center}
+
+.doc-image-large img{max-width:100%;max-height:620px;object-fit:contain}
+
+.tag-grid{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0 22px}
+
+.tag-grid span{background:#e8efe9;border:1px solid #cbd9ce;color:#145c39;padding:10px 14px;border-radius:999px;font-size:12px;font-weight:800}
+
+.doc-highlight{background:#f0f3ef;border:1px solid #d6ddd7;border-radius:12px;padding:20px 22px;margin-top:20px}
+
+.doc-highlight b{display:block;color:#177245;text-transform:uppercase;font-size:11px;letter-spacing:.1em;margin-bottom:8px}
+
+.application-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+.application-grid figure{margin:0;background:#fff;border:1px solid #d9ddd9;padding:10px;border-radius:12px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
+
+.application-grid img{width:100%;height:250px;object-fit:contain;background:#f1f3f0;border-radius:8px}
+
+.application-grid figcaption{text-align:center;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:#39433e;padding:12px 4px 6px}
+
+.doc-message,.doc-slogan{margin-top:20px;padding:22px;border-radius:14px;text-align:center}
+
+.doc-message{background:#17231d;color:#fff}.doc-slogan{background:#d4af37;color:#161a17}
+
+.doc-message small,.doc-slogan small{font-size:10px;letter-spacing:.2em;font-weight:900;opacity:.8}
+
+.doc-message p,.doc-slogan p{font-family:Georgia,'Times New Roman',serif;font-size:21px;margin-top:8px;color:inherit}
+
+.doc-end{text-align:center;border-top:1px solid #d8dbd7;padding-top:28px;margin-top:25px;color:#77817b;font-size:10px;font-weight:900;letter-spacing:.2em}
+
+.swatch{display:inline-block;width:17px;height:17px;border-radius:50%;vertical-align:-4px;margin-right:8px;border:1px solid #bbb}.swatch.black{background:#111}.swatch.green{background:#16803f}.swatch.red{background:#b91c1c}.swatch.yellow{background:#eab308}
+
+@media(max-width:700px){.doc-info-grid{grid-template-columns:1fr}.doc-info-grid .wide{grid-column:auto}.application-grid{grid-template-columns:1fr}.application-grid img{height:auto;max-height:500px}.doc-paper{padding:24px 17px}.doc-nav{position:static}.doc-cover{min-height:320px}.doc-cover-content{padding:30px 15px}.doc-paper p{font-size:15px}}
+
+.doc-image-secondary{margin:14px auto 0;max-width:500px;background:#eef1ed;border:1px solid #d8ddd8;padding:10px}.doc-image-secondary img{display:block;width:100%;max-height:420px;object-fit:contain}.communication-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.communication-images img{width:100%;max-height:520px;object-fit:contain;background:#eef1ed;border:1px solid #d8ddd8;border-radius:10px}@media(max-width:700px){.communication-images{grid-template-columns:1fr}}
+
+
+
+/* ===== Menú jerárquico del proyecto CINEMAZON ===== */
+
+
+
+.inicio-panel{min-width:235px}.inicio-category-link{display:block;width:100%;padding:10px 12px;border-radius:10px;color:#d1d5db;font-size:12px;font-weight:800;text-align:left;transition:background .18s ease,color .18s ease}.inicio-category-link:hover,.inicio-category-link:focus{background:rgba(0,168,89,.12);color:#fff;outline:none}.doc-nav{display:none!important}
+
+.project-menu{position:relative}
+
+.project-menu-panel{position:absolute;top:calc(100% + 12px);left:0;min-width:250px;background:#101820;border:1px solid #263342;border-radius:14px;padding:8px;box-shadow:0 20px 45px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.2s ease;z-index:80}
+
+.project-menu:hover .project-menu-panel,.project-menu:focus-within .project-menu-panel{opacity:1;visibility:visible;transform:translateY(0)}
+
+.project-menu-panel a{display:block;padding:10px 12px;border-radius:10px;color:#b8c0c9;font-size:12px;font-weight:700;transition:.2s}
+
+.project-menu-panel a:hover{background:rgba(0,168,89,.12);color:#fff;transform:translateX(3px)}
+
+.project-menu-label{display:flex;align-items:center;gap:7px;cursor:pointer;color:#d1d5db;transition:.2s}
+
+.project-menu-label:hover{color:#10b981}
+
+.project-menu-group{padding:7px 6px 5px;margin:2px 0;border-bottom:1px solid #25303c}
+
+.project-menu-group:last-child{border-bottom:0}
+
+.project-menu-group-title{display:block;padding:5px 6px 7px;color:#fbbf24;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+
+.project-menu-group a{padding:8px 9px;font-size:11px}
+
+.mobile-project-group{border:1px solid #25303c;border-radius:12px;background:#101820;overflow:hidden}
+
+.mobile-project-group summary{list-style:none;cursor:pointer;padding:11px 12px;color:#d1d5db;font-size:12px;font-weight:800}
+
+.mobile-project-group summary::-webkit-details-marker{display:none}
+
+.mobile-project-group[open] summary{color:#10b981;border-bottom:1px solid #25303c}
+
+.mobile-project-links{padding:5px 8px 8px}
+
+.mobile-project-links a{display:block;padding:8px 8px;color:#9ca3af;font-size:11px;font-weight:600;border-radius:8px}
+
+.mobile-project-links a:hover{background:rgba(0,168,89,.1);color:#fff}
+
+</style>
+
 </head>
+
 <body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-amazon-500 selection:text-white flex flex-col min-h-screen">
 
+
+
     <!-- Toast Notification Container -->
+
     <div id="toastContainer" class="fixed top-24 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
+
+
     <!-- HEADER NAVBAR -->
+
     <header class="sticky top-0 z-40 bg-darkbg/95 backdrop-blur-md border-b border-darkborder/80 transition-all duration-300">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="flex items-center justify-between h-20">
+
                 
+
                 <!-- Official Cinemazon Vector Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <img src="img/logocine.png" class="w-full h-full object-contain drop-shadow-md" alt="Logo CINEMAZON">
-                    </div>
+
+                <a href="#" class="flex items-center gap-3 group">                <div class="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+
+                    <!-- IMAGEN PERSONALIZABLE: coloca tu logo en img/logo-cinemazon.png -->
+
+                    <img src="img/logocine.png"
+
+                         class="w-full h-full object-contain drop-shadow-md"
+
+                         alt="Logo CINEMAZON">
+
+                </div>
+
+
+
                     <div class="flex flex-col">
+
                         <div class="flex items-center">
+
                             <span class="text-2xl font-black tracking-tight text-white font-sans">CINEMA<span class="text-amazon-500">ZON</span></span>
+
                         </div>
+
                         <span class="text-[9px] tracking-widest text-emerald-400 font-extrabold uppercase block -mt-1">Cine Selva Central • Satipo</span>
+
                     </div>
+
                 </a>
 
+
+
                 <!-- Navigation Links -->
+
                 <nav class="hidden md:flex items-center gap-5 font-semibold text-sm">
+
                     <!-- INICIO: categorías principales del proyecto -->
+
                     <div class="project-menu">
+
                         <button type="button" class="project-menu-label text-sm" aria-haspopup="true">
+
                             <i class="fa-solid fa-house text-amazon-500"></i> Inicio <i class="fa-solid fa-chevron-down text-[9px]"></i>
+
                         </button>
+
                         <div class="project-menu-panel inicio-panel">
+
                             <a class="inicio-category-link" href="#doc-empresa">Empresa</a>
+
                             <a class="inicio-category-link" href="#doc-publico">Público Objetivo</a>
+
                             <a class="inicio-category-link" href="#doc-identidad-corporativa">Identidad Corporativa</a>
+
                             <a class="inicio-category-link" href="#doc-identidad">Identidad Visual</a>
+
                             <a class="inicio-category-link" href="#doc-imagen-institucional">Imagen Institucional</a>
+
                             <a class="inicio-category-link" href="#doc-aplicaciones">Aplicaciones</a>
+
                             <a class="inicio-category-link" href="#doc-comunicacion">Comunicación</a>
+
                             <a class="inicio-category-link" href="#doc-mejoras">Propuestas de Mejora</a>
-                            <a class="inicio-category-link text-gold-400 font-bold" href="#plan-comunicacion"><i class="fa-solid fa-bullhorn mr-1"></i> Plan de Comunicación Corporativo</a>
+
                             <a class="inicio-category-link" href="#doc-conclusiones">Conclusiones</a>
+
                         </div>
+
                     </div>
 
-                    <a href="#plan-comunicacion" class="text-gold-400 hover:text-gold-500 transition-colors flex items-center gap-2 font-bold"><i class="fa-solid fa-bullhorn"></i> Plan de Comunicación</a>
+
+
                     <a href="#cartelera" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-film text-amazon-500"></i> Cartelera</a>
+
                     <a href="#dulceria" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-popcorn text-gold-500"></i> Dulcería</a>
+
                     <a href="#promociones" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2"><i class="fa-solid fa-tags text-emerald-400"></i> Promociones</a>
+
                     <a href="#ubicacion" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
+
                         <i class="fa-solid fa-location-dot text-red-500"></i> Satipo
+
                     </a>
+
                 </nav>
 
-                <div class="flex items-center gap-3">
+
+
+                
+
+
+
                     <!-- Cart Trigger -->
+
                     <button onclick="toggleCartSidebar(true)" class="relative p-2.5 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500/50 text-gray-200 transition-all duration-300 hover:text-amazon-500 flex items-center gap-2">
+
                         <i class="fa-solid fa-basket-shopping text-base"></i>
+
                         <span class="hidden lg:inline text-xs font-bold text-gray-300" id="headerCartTotal">S/. 0.00</span>
+
                         <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amazon-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden shadow-md">0</span>
+
                     </button>
+
+
 
                     <a href="#cartelera" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg shadow-amazon-500/20 hover:scale-105 active:scale-95 transition-all text-xs">
+
                         <i class="fa-solid fa-ticket"></i> Entradas
+
                     </a>
 
+
+
                     <!-- Mobile Toggle -->
+
                     <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-darkcard">
+
                         <i class="fa-solid fa-bars text-xl"></i>
+
                     </button>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <!-- Mobile Navigation Drawer -->
+
         <div id="mobileMenu" class="hidden md:hidden bg-darkcard border-b border-darkborder px-4 py-4 space-y-3 max-h-[80vh] overflow-y-auto">
+
             <div class="mb-3">
+
                 <input type="text" oninput="handleSearch()" placeholder="Buscar película..." class="w-full bg-darkbg border border-darkborder rounded-xl px-3 py-2 text-xs text-white outline-none">
+
             </div>
+
+
 
             <details class="mobile-project-group" open>
+
                 <summary><i class="fa-solid fa-house w-6 text-amazon-500"></i> INICIO</summary>
+
                 <div class="mobile-project-links">
+
                     <a href="#doc-empresa" onclick="toggleMobileMenu()">Empresa</a>
+
                     <a href="#doc-publico" onclick="toggleMobileMenu()">Público Objetivo</a>
+
                     <a href="#doc-identidad-corporativa" onclick="toggleMobileMenu()">Identidad Corporativa</a>
+
                     <a href="#doc-identidad" onclick="toggleMobileMenu()">Identidad Visual</a>
+
                     <a href="#doc-imagen-institucional" onclick="toggleMobileMenu()">Imagen Institucional</a>
+
                     <a href="#doc-aplicaciones" onclick="toggleMobileMenu()">Aplicaciones</a>
+
                     <a href="#doc-comunicacion" onclick="toggleMobileMenu()">Comunicación</a>
+
                     <a href="#doc-mejoras" onclick="toggleMobileMenu()">Propuestas de Mejora</a>
-                    <a href="#plan-comunicacion" onclick="toggleMobileMenu()" class="text-gold-400 font-bold"><i class="fa-solid fa-bullhorn mr-1"></i> Plan de Comunicación Corporativo</a>
-                    <a href="#doc-conclusiones" onclick="toggleMobileMenu()">Conclusiones</a>
+
+                    <a href="#doc-conclusiones" onclick="toggleMobileMenu()">09 Conclusiones</a>
+
                 </div>
+
             </details>
 
-            <a href="#plan-comunicacion" onclick="toggleMobileMenu()" class="block text-gold-400 hover:text-gold-500 py-1.5 font-bold"><i class="fa-solid fa-bullhorn w-6"></i> Plan de Comunicación</a>
+
+
             <a href="#cartelera" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-film w-6 text-amazon-500"></i> Cartelera</a>
+
             <a href="#dulceria" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-popcorn w-6 text-gold-500"></i> Dulcería & Combos</a>
+
             <a href="#promociones" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-tags w-6 text-emerald-400"></i> Promociones</a>
+
+
+
             <a href="#ubicacion" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-location-dot w-6 text-red-500"></i> Ubicación Satipo</a>
+
         </div>
+
     </header>
 
+
+
     <!-- HERO CAROUSEL -->
+
     <section class="relative bg-darkbg overflow-hidden min-h-[500px] lg:min-h-[580px] flex items-center border-b border-darkborder">
+
+        <!-- Hero Background: video del tráiler + imagen de respaldo -->
+
         <div id="heroBgContainer" class="absolute inset-0 z-0 overflow-hidden">
+
             <img id="heroBgImage" src="img/hero-1.jpg" class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-all duration-1000" alt="Cinemazon Hero Banner">
+
             
+
+            <!-- Tráiler local como video de fondo, sin controles y sin sonido -->
+
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <video id="heroBgVideo" class="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]" src="videos/avengers.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+
+                <video
+
+                    id="heroBgVideo"
+
+                    class="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
+
+                    src="videos/avengers.mp4"
+
+                    autoplay
+
+                    muted
+
+                    loop
+
+                    playsinline
+
+                    preload="auto"
+
+                    aria-hidden="true">
+
+                </video>
+
             </div>
+
+
+
+            <!-- Capa para oscurecer y mejorar la lectura del contenido -->
 
             <div class="absolute inset-0 bg-black/35"></div>
+
             <div class="absolute inset-0 hero-gradient"></div>
+
         </div>
+
+
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+
             <div class="max-w-2xl">
+
+                <!-- Tag -->
+
                 <div class="inline-flex items-center gap-2 bg-amazon-500/20 border border-amazon-500/40 text-emerald-300 font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4 backdrop-blur-sm">
+
                     <span class="w-2 h-2 rounded-full bg-amazon-500 animate-pulse"></span> Gran Estreno en Satipo
+
                 </div>
+
+
+
+                <!-- Title & Specs -->
 
                 <h1 id="heroTitle" class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4 drop-shadow-md">
+
                     AVENGERS: DOOMSDAY
+
                 </h1>
 
+
+
                 <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-300 mb-6">
+
                     <span class="bg-gold-500/20 border border-gold-500/50 text-gold-400 px-2.5 py-1 rounded-md font-extrabold">14+</span>
+
                     <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-amazon-500"></i> <span id="heroDuration">2h 15min</span></span>
+
                     <span class="flex items-center gap-1.5"><i class="fa-solid fa-masks-theater text-amazon-500"></i> <span id="heroGenre">Acción / Fantasía</span></span>
+
                     <span class="flex items-center gap-1 text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.9/5</span>
+
                 </div>
+
+
 
                 <p id="heroDescription" class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8 line-clamp-3">
+
                     Un nuevo orden se alza desde las cenizas. El destino del multiverso está en sus manos. Disfruta de Avengers: Doomsday en Cinemazon.
+
                 </p>
+
+
+
+                <!-- Actions -->
 
                 <div class="flex flex-wrap items-center gap-4">
+
                     <button onclick="openSeatModal('p1', 'AVENGERS: DOOMSDAY', '18:30')" class="bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-extrabold px-7 py-3.5 rounded-xl shadow-lg shadow-amazon-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+
                         <i class="fa-solid fa-ticket text-lg"></i> Reservar Asientos
+
                     </button>
-                    <button id="heroTrailerButton" onclick="openTrailerModal('https://www.youtube.com/watch?v=lAr_uspgHm8')" class="bg-darkcard/80 hover:bg-darkborder text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 hover:text-white">
+
+                    <button id="heroTrailerButton" onclick="openTrailerModal(heroSlides[currentHeroIndex].trailer)" class="bg-darkcard/80 hover:bg-darkborder text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 hover:text-white">
+
                         <i class="fa-solid fa-circle-play text-red-500 text-lg"></i> Ver Tráiler
+
                     </button>
+
                 </div>
+
             </div>
+
         </div>
+
+
+
+        <!-- Carousel Indicators -->
 
         <div class="absolute bottom-6 right-6 sm:right-12 z-20 flex gap-2" id="heroDots">
+
             <button onclick="changeHero(0)" class="w-3 h-3 rounded-full bg-amazon-500 transition-all"></button>
+
             <button onclick="changeHero(1)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
+
             <button onclick="changeHero(2)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
+
         </div>
+
     </section>
 
-    <!-- SECCIÓN DE DOCUMENTACIÓN INSTITUCIONAL -->
-    <section id="doc-empresa" class="py-16 bg-darkcard/50 border-b border-darkborder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">Documentación Institucional</span>
-                <h2 class="text-3xl font-black text-white tracking-tight mt-1">Información Corporativa de CINEMAZON PERÚ S.A.C.</h2>
-                <p class="text-gray-400 text-sm mt-1">Conoce la estructura, visión e identidad de nuestro cine en la Selva Central.</p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div id="doc-publico" class="project-content-card">
-                    <h4><i class="fa-solid fa-users text-amazon-500 mr-2"></i>Público Objetivo</h4>
-                    <p>Orientado a familias, jóvenes universitarios y amantes del cine de 12 a 50 años en Satipo, Junín y distritos aledaños de la Selva Central.</p>
-                </div>
-                <div id="doc-identidad-corporativa" class="project-content-card">
-                    <h4><i class="fa-solid fa-gem text-gold-500 mr-2"></i>Misión y Visión</h4>
-                    <p>Brindar entretenimiento audiovisual con proyecciones 4K de nivel internacional, posicionándonos como la cadena líder en la región para 2030.</p>
-                </div>
-                <div id="doc-identidad" class="project-content-card">
-                    <h4><i class="fa-solid fa-palette text-emerald-400 mr-2"></i>Identidad Visual</h4>
-                    <p>Mascota del tucán representativa, tonos verde selva (#1B5E20), amarillo dorado, rojo pasión y negro. Tipografía oficial Montserrat y Roboto.</p>
-                </div>
-                <div id="doc-imagen-institucional" class="project-content-card">
-                    <h4><i class="fa-solid fa-building text-blue-400 mr-2"></i>Imagen Institucional</h4>
-                    <p>Proyectamos una marca moderna, confiable, regional y tecnológicamente avanzada con fuerte compromiso en el servicio al cliente.</p>
-                </div>
-                <div id="doc-aplicaciones" class="project-content-card">
-                    <h4><i class="fa-solid fa-box text-purple-400 mr-2"></i>Aplicaciones de Marca</h4>
-                    <p>Empaques de confitería personalizados, uniformes corporativos con polo camisero verde/negro, entradas digitales e instalaciones temáticas.</p>
-                </div>
-                <div id="doc-mejoras" class="project-content-card">
-                    <h4><i class="fa-solid fa-chart-line text-amazon-400 mr-2"></i>Propuestas de Mejora</h4>
-                    <p>Implementación de e-commerce con autoservicio, pantalla LED externa publicitaria en Satipo y automatización de atenciones en WhatsApp.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NUEVA SECCIÓN: PLAN DE COMUNICACIÓN CORPORATIVO (AGREGADO) -->
-    <section id="plan-comunicacion" class="py-16 bg-darkbg border-b border-darkborder scroll-mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-gold-500 text-xs font-black uppercase tracking-widest block mb-1">Estrategia 2026</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Plan de Comunicación Corporativa</h2>
-                <div class="w-20 h-1 bg-amazon-500 mx-auto my-4 rounded-full"></div>
-                <p class="text-gray-400 text-sm">
-                    CINEMAZON S.A.C. — "El encuentro de la selva con el cine". Estructura de comunicación interna y externa para Satipo y la Selva Central.
-                </p>
-            </div>
-
-            <!-- 1. Datos Generales & 2. Presentación -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-lg font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-address-card text-amazon-500"></i> 1. Datos Generales
-                    </h3>
-                    <div class="space-y-3 text-xs">
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Empresa:</span><span class="text-white font-semibold">CINEMAZON S.A.C.</span></div>
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Giro del Negocio:</span><span class="text-white font-semibold">Entretenimiento, exhibición cinematográfica y confitería</span></div>
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Actividad Principal:</span><span class="text-white font-semibold">Proyección 2D/3D (4K), combos temáticos y eventos</span></div>
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Público Objetivo:</span><span class="text-white font-semibold">Familias, jóvenes y estudiantes (12 a 50 años) en Satipo</span></div>
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Duración:</span><span class="text-emerald-400 font-bold">3 Meses (Trimestral)</span></div>
-                        <div class="flex justify-between border-b border-darkborder/60 pb-2"><span class="text-gray-400 font-bold">Responsable:</span><span class="text-white font-semibold">Área de Comunicación y Marketing / Administrador</span></div>
-                        <div class="flex justify-between pt-1"><span class="text-gray-400 font-bold">Nombre del Plan:</span><span class="text-gold-400 font-bold">"CINEMAZON: La Selva se conecta con el cine"</span></div>
-                    </div>
-                </div>
-
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-extrabold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-file-powerpoint text-gold-500"></i> 2. Presentación
-                        </h3>
-                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
-                            El presente Plan de Comunicación Corporativa tiene como finalidad establecer las estrategias, canales, acciones y mensajes clave que utilizará CINEMAZON PERÚ S.A.C. para fortalecer la relación con su equipo interno, sus clientes y la comunidad de Satipo[cite: 6].
-                        </p>
-                        <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                            Permitirá estructurar los mensajes transmitidos a través de canales digitales y medios presenciales en el complejo, proyectando una imagen de marca moderna, tecnológica, cálida y con una firme identidad de la Selva Central[cite: 6].
-                        </p>
-                    </div>
-                    <div class="mt-4 bg-amazon-500/10 border border-amazon-500/30 p-3 rounded-xl text-xs text-amazon-400 font-bold text-center">
-                        <i class="fa-solid fa-quote-left mr-1"></i> "EL ENCUENTRO DE LA SELVA CON EL CINE"[cite: 6]
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Diagnóstico de la Comunicación -->
-            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 mb-12 shadow-xl">
-                <h3 class="text-lg font-extrabold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-stethoscope text-emerald-400"></i> 3. Diagnóstico de la Comunicación
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-darkbg p-4 rounded-xl border border-darkborder">
-                        <span class="text-xs font-black text-amazon-500 uppercase tracking-wider block mb-2">3.1 Situación Interna</span>
-                        <p class="text-gray-300 text-xs leading-relaxed">
-                            Se requiere estructurar un canal oficial de comunicación para coordinar turnos, promociones semanales, estrenos, estrenos de medianoche y protocolos de atención al cliente y seguridad en salas[cite: 6].
-                        </p>
-                    </div>
-                    <div class="bg-darkbg p-4 rounded-xl border border-darkborder">
-                        <span class="text-xs font-black text-gold-500 uppercase tracking-wider block mb-2">3.2 Situación Externa</span>
-                        <p class="text-gray-300 text-xs leading-relaxed">
-                            Es necesario consolidar la presencia digital en redes sociales (TikTok e Instagram), estandarizar la línea gráfica oficial de la marca (colores Verde Selva, Negro y Dorado/Amarillo; tipografía Montserrat/Roboto), mantener actualizada la cartelera online y la reserva digital de asientos[cite: 6].
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. FODA -->
-            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 mb-12 shadow-xl">
-                <h3 class="text-lg font-extrabold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-chart-pie text-gold-500"></i> 4. Análisis FODA de la Comunicación
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-                    <div class="bg-darkbg p-4 rounded-xl border-l-4 border-amazon-500">
-                        <h4 class="font-bold text-amazon-400 uppercase tracking-wider mb-2">Fortalezas (F) — Internas</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1.5">
-                            <li>Identidad gráfica sólida vinculada al orgullo de la Selva Central (mascota tucán y paleta tropical)[cite: 6].</li>
-                            <li>Plataforma web moderna con sistema interactivo de reserva de asientos y carrito de dulcería[cite: 6].</li>
-                            <li>Único complejo cinematográfico moderno con proyecciones 4K y sonido envolvente en la zona[cite: 6].</li>
-                            <li>Combos de dulcería temáticos y atención cercana[cite: 6].</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-darkbg p-4 rounded-xl border-l-4 border-gold-500">
-                        <h4 class="font-bold text-gold-400 uppercase tracking-wider mb-2">Oportunidades (O) — Externas</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1.5">
-                            <li>Creación de promociones exclusivas por compra digital (Yape/Plin)[cite: 6].</li>
-                            <li>Crecimiento de la demanda de entretenimiento y cultura pop en Satipo y distritos aledaños (Río Negro, Mazamari)[cite: 6].</li>
-                            <li>Tendencia de videos cortos de alto impacto en TikTok e Instagram para promoción de estrenos y detrás de cámaras[cite: 6].</li>
-                            <li>Alianzas con colegios e instituciones para funciones culturales y corporativas[cite: 6].</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-darkbg p-4 rounded-xl border-l-4 border-yellow-600">
-                        <h4 class="font-bold text-yellow-500 uppercase tracking-wider mb-2">Debilidades (D) — Internas</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1.5">
-                            <li>Falta de automatización para responder consultas frecuentes en WhatsApp sobre horarios y precios[cite: 6].</li>
-                            <li>Publicaciones irregulares en redes durante días con poca afluencia de estrenos[cite: 6].</li>
-                            <li>Necesidad de capacitar al personal en la difusión activa de combos de dulcería[cite: 6].</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-darkbg p-4 rounded-xl border-l-4 border-red-500">
-                        <h4 class="font-bold text-red-400 uppercase tracking-wider mb-2">Amenazas (A) — Externas</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1.5">
-                            <li>Filtro de películas en plataformas de streaming o piratería digital[cite: 6].</li>
-                            <li>Variaciones climáticas extremas que reduzcan el desplazamiento del público[cite: 6].</li>
-                            <li>Saturación de publicidad en redes sociales[cite: 6].</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5, 6 y 7 -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-users text-amazon-500"></i> 5. Públicos Objetivo
-                    </h3>
-                    <div class="space-y-3 text-xs">
-                        <div class="bg-darkbg p-3 rounded-lg border border-darkborder">
-                            <span class="font-bold text-emerald-400 block mb-1">PÚBLICO INTERNO</span>
-                            <p class="text-gray-300">Administrador General • Técnico de Proyección • Personal Taquilla / Dulcería[cite: 6]</p>
-                        </div>
-                        <div class="bg-darkbg p-3 rounded-lg border border-darkborder">
-                            <span class="font-bold text-gold-400 block mb-1">PÚBLICO EXTERNO</span>
-                            <p class="text-gray-300">Estudiantes y Jóvenes • Familias y Parejas • Turistas y Visitantes[cite: 6]</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-bullseye text-gold-500"></i> 6. Objetivos
-                    </h3>
-                    <div class="text-xs space-y-2 text-gray-300">
-                        <p class="font-bold text-white mb-1">Objetivo General:</p>
-                        <p class="bg-darkbg p-2 rounded-lg border border-darkborder mb-2 text-[11px]">
-                            Fortalecer la comunicación corporativa interna y externa durante 3 meses, aumentando ventas e identidad[cite: 6].
-                        </p>
-                        <p class="font-bold text-white">Específicos:</p>
-                        <ul class="list-disc list-inside space-y-1 text-gray-400 text-[11px]">
-                            <li>O1. Coordinación interna[cite: 6].</li>
-                            <li>O2. +20% interacción digital[cite: 6].</li>
-                            <li>O3. +15% ventas web previas[cite: 6].</li>
-                            <li>O4. Campañas publicitarias Satipo[cite: 6].</li>
-                            <li>O5. Medición de KPIs[cite: 6].</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-crown text-yellow-500"></i> 7. Identidad
-                        </h3>
-                        <div class="space-y-3 text-xs">
-                            <div>
-                                <span class="text-gray-400 font-bold block mb-1">Atributos de Marca:</span>
-                                <div class="flex flex-wrap gap-1">
-                                    <span class="bg-amazon-500/20 text-emerald-300 px-2 py-0.5 rounded-md text-[10px] font-bold">Moderna</span>
-                                    <span class="bg-amazon-500/20 text-emerald-300 px-2 py-0.5 rounded-md text-[10px] font-bold">Innovadora</span>
-                                    <span class="bg-amazon-500/20 text-emerald-300 px-2 py-0.5 rounded-md text-[10px] font-bold">Regional</span>
-                                    <span class="bg-amazon-500/20 text-emerald-300 px-2 py-0.5 rounded-md text-[10px] font-bold">Acogedora</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-gold-500/10 border border-gold-500/30 p-3 rounded-xl text-center mt-4">
-                        <span class="text-[10px] text-gray-400 uppercase font-black block">Slogan Principal</span>
-                        <span class="text-xs font-black text-gold-400">“EL ENCUENTRO DE LA SELVA CON EL CINE”[cite: 6]</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8 y 9. Canales y Acciones -->
-            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 mb-12 shadow-xl overflow-x-auto">
-                <h3 class="text-lg font-extrabold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-comments text-amazon-500"></i> 8 y 9. Canales y Plan de Acciones Detallado
-                </h3>
-                <table class="w-full text-left text-xs text-gray-300">
-                    <thead class="bg-darkbg text-amazon-400 uppercase font-black border-b border-darkborder">
-                        <tr>
-                            <th class="p-3">Acción</th>
-                            <th class="p-3">Canal</th>
-                            <th class="p-3">Frecuencia</th>
-                            <th class="p-3">Responsable</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-darkborder/50">
-                        <tr><td class="p-3 font-semibold text-white">Publicación de tráilers, reels y trends de películas[cite: 6]</td><td class="p-3">TikTok / Instagram[cite: 6]</td><td class="p-3 font-bold text-emerald-400">4x por semana[cite: 6]</td><td class="p-3">Marketing y Comunicación[cite: 6]</td></tr>
-                        <tr><td class="p-3 font-semibold text-white">Difusión de la cartelera semanal y promociones (Martes 2x1)[cite: 6]</td><td class="p-3">Facebook / Web[cite: 6]</td><td class="p-3 font-bold text-emerald-400">Semanal (Jueves)[cite: 6]</td><td class="p-3">Marketing[cite: 6]</td></tr>
-                        <tr><td class="p-3 font-semibold text-white">Atención de consultas y envío de cartelera interactiva[cite: 6]</td><td class="p-3">WhatsApp Business[cite: 6]</td><td class="p-3 font-bold text-emerald-400">Diario[cite: 6]</td><td class="p-3">Atención al cliente[cite: 6]</td></tr>
-                        <tr><td class="p-3 font-semibold text-white">Campaña de identidad "Orgullo Selva Central"[cite: 6]</td><td class="p-3">Redes / Sitio Web[cite: 6]</td><td class="p-3 font-bold text-emerald-400">Quincenal[cite: 6]</td><td class="p-3">Comunicación[cite: 6]</td></tr>
-                        <tr><td class="p-3 font-semibold text-white">Reunión de alineación operativa y servicio de dulcería[cite: 6]</td><td class="p-3">Presencial (Local)[cite: 6]</td><td class="p-3 font-bold text-emerald-400">Mensual[cite: 6]</td><td class="p-3">Administrador[cite: 6]</td></tr>
-                        <tr><td class="p-3 font-semibold text-white">Actualización de pantallas LED exteriores e interactivas[cite: 6]</td><td class="p-3">Local / Pantallas[cite: 6]</td><td class="p-3 font-bold text-emerald-400">Semanal[cite: 6]</td><td class="p-3">Soporte Técnico / Marketing[cite: 6]</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 10, 11 y 12. Cronograma, Presupuesto y KPIs -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-calendar-days text-gold-500"></i> 10. Cronograma
-                    </h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Diagnóstico e Identidad[cite: 6]</span><span class="text-amazon-400 font-bold">Mes 1[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Configuración Web/WhatsApp[cite: 6]</span><span class="text-amazon-400 font-bold">Mes 1[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Promoción Reserva QR[cite: 6]</span><span class="text-gold-400 font-bold">Mes 2 - 3[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Gestión TikTok/Instagram[cite: 6]</span><span class="text-gold-400 font-bold">Mes 2 - 3[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Informe Final[cite: 6]</span><span class="text-emerald-400 font-bold">Mes 3[cite: 6]</span></div>
-                    </div>
-                </div>
-
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-wallet text-emerald-400"></i> 11. Presupuesto
-                    </h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Plantillas / Reels[cite: 6]</span><span class="font-bold text-white">S/ 200.00[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Ads Meta / TikTok Satipo[cite: 6]</span><span class="font-bold text-white">S/ 400.00[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Tótems / Menús impresos[cite: 6]</span><span class="font-bold text-white">S/ 350.00[cite: 6]</span></div>
-                        <div class="flex justify-between bg-darkbg p-2 rounded-lg border border-darkborder"><span class="text-gray-300">Foto / Video Dulcería[cite: 6]</span><span class="font-bold text-white">S/ 250.00[cite: 6]</span></div>
-                        <div class="flex justify-between bg-amazon-500/20 p-2.5 rounded-lg border border-amazon-500/40 text-amazon-300 font-black"><span>TOTAL</span><span>S/ 1,200.00[cite: 6]</span></div>
-                    </div>
-                </div>
-
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-base font-extrabold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-chart-line text-amazon-500"></i> 12. Indicadores (KPIs)
-                    </h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="bg-darkbg p-2 rounded-lg border border-darkborder">
-                            <span class="text-gray-400 font-bold block">Frecuencia Publicaciones:</span>
-                            <span class="text-emerald-400 font-bold">16 contenidos al mes[cite: 6]</span>
-                        </div>
-                        <div class="bg-darkbg p-2 rounded-lg border border-darkborder">
-                            <span class="text-gray-400 font-bold block">Respuesta Digital:</span>
-                            <span class="text-emerald-400 font-bold">100% &lt; 10 min[cite: 6]</span>
-                        </div>
-                        <div class="bg-darkbg p-2 rounded-lg border border-darkborder">
-                            <span class="text-gray-400 font-bold block">Reservas Web:</span>
-                            <span class="text-gold-400 font-bold">+20% compras web[cite: 6]</span>
-                        </div>
-                        <div class="bg-darkbg p-2 rounded-lg border border-darkborder">
-                            <span class="text-gray-400 font-bold block">Venta Combos:</span>
-                            <span class="text-gold-400 font-bold">+15% mensual[cite: 6]</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 13, 14 y 15. Proceso Continuo y Matriz Cuadro -->
-            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 mb-8 shadow-xl">
-                <h3 class="text-lg font-extrabold text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-arrows-spin text-gold-500"></i> 13, 14 y 15. Proceso Continuo y Matriz de Control
-                </h3>
-                
-                <!-- 14. CUADRO FASES DEL MODELO -->
-                <div class="overflow-x-auto mb-6">
-                    <table class="w-full text-left text-xs text-gray-300 border border-darkborder">
-                        <thead class="bg-darkbg text-gold-400 uppercase font-black border-b border-darkborder">
-                            <tr>
-                                <th class="p-3 border-r border-darkborder">FASE DEL CICLO[cite: 6]</th>
-                                <th class="p-3 border-r border-darkborder">MECANISMO DE ACCIÓN[cite: 6]</th>
-                                <th class="p-3">EJEMPLO PRÁCTICO EN CINEMAZON[cite: 6]</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-darkborder">
-                            <tr>
-                                <td class="p-3 font-bold text-white border-r border-darkborder">1. Diagnóstico Continuo[cite: 6]</td>
-                                <td class="p-3 border-r border-darkborder">Escucha activa en la taquilla/dulcería y revisión diaria de mensajes recibidos en WhatsApp y redes sociales[cite: 6].</td>
-                                <td class="p-3 text-gray-400">Se detecta que los clientes preguntan frecuentemente en WhatsApp si el "Combo Selva" incluye cancha dulce o salada y si la reserva web asegura el asiento[cite: 6].</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-white border-r border-darkborder">2. Ajuste Estratégico[cite: 6]</td>
-                                <td class="p-3 border-r border-darkborder">Rediseño de piezas gráficas, actualización de los copys informativos y de la interfaz web[cite: 6].</td>
-                                <td class="p-3 text-gray-400">Se modifica el arte digital y la sección de dulcería web especificando claramente: "Incluye Canchita XL (Dulce/Salada) + 2 Gaseosas y Selección de Asiento Reservada"[cite: 6].</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-white border-r border-darkborder">3. Ejecución Focalizada[cite: 6]</td>
-                                <td class="p-3 border-r border-darkborder">Lanzamiento de la versión corregida en redes sociales, actualización del sitio web y briefing al personal[cite: 6].</td>
-                                <td class="p-3 text-gray-400">El personal de dulcería confirma al cliente el sabor de canchita al momento de escanear su código QR de reserva web, alineado al nuevo post publicitario[cite: 6].</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-white border-r border-darkborder">4. Control & Medición[cite: 6]</td>
-                                <td class="p-3 border-r border-darkborder">Evaluación semanal del volumen de ventas anticipadas y tiempo de atención en la taquilla[cite: 6].</td>
-                                <td class="p-3 text-gray-400">Disminuyen un 50% las dudas repetitivas en WhatsApp y aumentan un 22% las ventas anticipadas de combos desde la página web[cite: 6].</td>
-                            </tr>
-                            <tr>
-                                <td class="p-3 font-bold text-white border-r border-darkborder">5. Aprendizaje Organizacional[cite: 6]</td>
-                                <td class="p-3 border-r border-darkborder">Documentación del cambio e integración en el manual de procedimientos internos[cite: 6].</td>
-                                <td class="p-3 text-gray-400">Se estandariza la regla de colocar siempre las opciones de personalización (sabores/tamaños) y la ventaja del escaneo rápido en todas las futuras promociones de dulcería[cite: 6].</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="bg-darkbg p-4 rounded-xl border border-darkborder text-xs text-gray-300">
-                    <span class="font-bold text-amazon-400 uppercase block mb-1">15. Mecanismo de Control y Evaluación Trimestral[cite: 6]</span>
-                    <p class="leading-relaxed">
-                        Al finalizar la Semana 12, el Área de Comunicación y la Administración de CINEMAZON convocarán a una sesión de revisión final[cite: 6]. Se contrastarán los datos obtenidos frente a las metas fijadas en la matriz de KPIs[cite: 6]. Las campañas que registren mayor retorno (como la reserva web de boletos con Yape/Plin o los videos de TikTok) se mantendrán como políticas oficiales del plan de comunicación anual del cine[cite: 6].
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CARTELERA DE PELÍCULAS -->
+
     <section id="cartelera" class="py-16 bg-darkbg">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            
+
+            <!-- Section Header -->
+
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+
                 <div>
+
                     <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">En Cartelera</span>
+
                     <h2 class="text-3xl font-black text-white tracking-tight mt-1">Películas Disponibles en Satipo</h2>
+
                     <p class="text-gray-400 text-sm mt-1">Elige la película y horario de tu preferencia para asegurar tu entrada.</p>
+
                 </div>
+
+
 
                 <!-- Date Tabs Filter -->
+
                 <div class="flex items-center bg-darkcard p-1.5 rounded-2xl border border-darkborder self-start md:self-auto">
-                    <button onclick="filterDate(this, 'hoy')" class="date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md">Hoy</button>
-                    <button onclick="filterDate(this, 'manana')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">Mañana</button>
-                    <button onclick="filterDate(this, 'finde')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">Fin de Semana</button>
+
+                    <button onclick="filterDate(this, 'hoy')" class="date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md">
+
+                        Hoy
+
+                    </button>
+
+                    <button onclick="filterDate(this, 'manana')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
+
+                        Mañana
+
+                    </button>
+
+                    <button onclick="filterDate(this, 'finde')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
+
+                        Fin de Semana
+
+                    </button>
+
                 </div>
+
             </div>
+
+
 
             <!-- Movies Grid Container -->
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="movieGrid">
+
+                
+
                 <!-- Movie 1 -->
+
                 <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="Avengers: Doomsday">
+
                     <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
+
                         <img src="img/avengers.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Avengers: Doomsday">
-                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-emerald-400 border border-emerald-500/30">3D DIGITAL</div>
-                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">★ 4.9</div>
+
+                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-emerald-400 border border-emerald-500/30">
+
+                            3D DIGITAL
+
+                        </div>
+
+                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
+
+                            ★ 4.9
+
+                        </div>
+
                     </div>
+
+
 
                     <div class="p-6 flex-1 flex flex-col justify-between">
+
                         <div>
+
                             <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
+
                                 <span>135 min</span> • <span>Acción / Fantasía</span> • <span class="text-emerald-400 font-bold">14+</span>
+
                             </div>
+
                             <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">Avengers: Doomsday</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">Un nuevo orden se alza desde las cenizas. Disfrútalo con efectos Dolby Atmos.</p>
+
+                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
+
+                                Un nuevo orden se alza desde las cenizas. El destino del multiverso está en sus manos, disfrutalo con efectos de sonido Dolby Atmos.
+
+                            </p>
+
                             <button onclick="openTrailerModal('https://www.youtube.com/watch?v=lAr_uspgHm8')" class="w-full mt-2 bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+
                                 <i class="fa-solid fa-circle-play"></i> Ver tráiler
+
                             </button>
+
                         </div>
 
-                        <div class="mt-4">
+
+
+                        <div>
+
                             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
+
                             <div class="flex flex-wrap gap-2">
-                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '16:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">4:00 PM</button>
-                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '18:30')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">6:30 PM</button>
-                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '21:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">9:00 PM</button>
+
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '16:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+
+                                    4:00 PM
+
+                                </button>
+
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '18:30')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+
+                                    6:30 PM
+
+                                </button>
+
+                                <button onclick="openSeatModal('p1', 'Avengers: Doomsday', '21:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
+
+                                    9:00 PM
+
+                                </button>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Movie 2 -->
-                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="Spider-Man: Beyond">
-                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
-                        <img src="img/pelicula-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Spider-Man">
-                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-emerald-400 border border-emerald-500/30">2D DIGITAL</div>
-                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">★ 4.8</div>
-                    </div>
 
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
-                                <span>120 min</span> • <span>Animación / Acción</span> • <span class="text-emerald-400 font-bold">TE</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">Spider-Man: Beyond the Spider-Verse</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">Miles Morales regresa en una aventura épica multiversal.</p>
-                            <button onclick="openTrailerModal('https://www.youtube.com/watch?v=shW9i6k8cB0')" class="w-full mt-2 bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 hover:border-red-500 font-bold px-4 py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-circle-play"></i> Ver tráiler
-                            </button>
-                        </div>
-
-                        <div class="mt-4">
-                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="openSeatModal('p2', 'Spider-Man', '15:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">3:00 PM</button>
-                                <button onclick="openSeatModal('p2', 'Spider-Man', '17:30')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">5:30 PM</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DULCERÍA Y COMBOS -->
-    <section id="dulceria" class="py-16 bg-darkcard/40 border-t border-b border-darkborder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-gold-500 text-xs font-black uppercase tracking-widest block mb-1">Confitería Cinemazon</span>
-                <h2 class="text-3xl font-black text-white tracking-tight">Combos & Canchita</h2>
-                <p class="text-gray-400 text-sm mt-1">Acompaña tu película con la mejor canchita y bebidas heladas de Satipo.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Combo 1 -->
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 flex flex-col justify-between hover:border-gold-500/50 transition-all">
-                    <div>
-                        <div class="h-44 bg-darkbg rounded-xl mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="img/combo-pareja.png" alt="Combo Pareja" class="h-full object-contain">
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-1">Combo Pareja</h3>
-                        <p class="text-xs text-gray-400 mb-3">1 Balde XL de Canchita + 2 Gaseosas Medianas + 1 M&M / Golosina.</p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-darkborder/60 pt-4">
-                        <span class="text-xl font-black text-gold-400">S/. 28.00</span>
-                        <button onclick="addToCart('Combo Pareja', 28.00)" class="bg-gold-500 hover:bg-gold-600 text-darkbg font-black px-4 py-2 rounded-xl text-xs transition-all">
-                            <i class="fa-solid fa-cart-plus mr-1"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Combo 2 -->
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 flex flex-col justify-between hover:border-amazon-500/50 transition-all">
-                    <div>
-                        <div class="h-44 bg-darkbg rounded-xl mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="img/combo-selva.png" alt="Combo Selva Central" class="h-full object-contain">
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-1">Combo Selva Central</h3>
-                        <p class="text-xs text-gray-400 mb-3">1 Balde Canchita XL (Salada o Dulce) + 2 Bebidas Heladas + Nachos con Queso.</p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-darkborder/60 pt-4">
-                        <span class="text-xl font-black text-amazon-400">S/. 35.00</span>
-                        <button onclick="addToCart('Combo Selva Central', 35.00)" class="bg-amazon-500 hover:bg-amazon-600 text-white font-black px-4 py-2 rounded-xl text-xs transition-all">
-                            <i class="fa-solid fa-cart-plus mr-1"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Combo 3 -->
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 flex flex-col justify-between hover:border-gold-500/50 transition-all">
-                    <div>
-                        <div class="h-44 bg-darkbg rounded-xl mb-4 overflow-hidden flex items-center justify-center">
-                            <img src="img/canchita-xl.png" alt="Balde XL" class="h-full object-contain">
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-1">Balde Canchita XL</h3>
-                        <p class="text-xs text-gray-400 mb-3">Balde gigante sabor Mantekilla, Salada o Mix Dulce/Salada.</p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-darkborder/60 pt-4">
-                        <span class="text-xl font-black text-gold-400">S/. 18.00</span>
-                        <button onclick="addToCart('Balde Canchita XL', 18.00)" class="bg-gold-500 hover:bg-gold-600 text-darkbg font-black px-4 py-2 rounded-xl text-xs transition-all">
-                            <i class="fa-solid fa-cart-plus mr-1"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- UBICACIÓN EN SATIPO -->
-    <section id="ubicacion" class="py-16 bg-darkbg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <span class="text-red-500 text-xs font-black uppercase tracking-widest block mb-1">Nuestra Sede</span>
-                    <h2 class="text-3xl font-black text-white tracking-tight mb-4">Visítanos en Satipo</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                        Disfruta de la mejor infraestructura cinematográfica de la Selva Central. Proyección digital 4K, sonido surround y salas climatizadas.
-                    </p>
-                    <div class="space-y-3 text-xs text-gray-300">
-                        <p><i class="fa-solid fa-location-dot text-red-500 mr-2"></i> Satipo, Junín — Selva Central, Perú</p>
-                        <p><i class="fa-solid fa-clock text-amazon-500 mr-2"></i> Lunes a Domingo: 2:00 PM - 11:00 PM</p>
-                        <p><i class="fa-solid fa-phone text-gold-500 mr-2"></i> Atención & Consultas WhatsApp</p>
-                    </div>
-                </div>
-                <div class="bg-darkcard border border-darkborder p-4 rounded-2xl h-64 flex items-center justify-center text-gray-500 text-sm">
-                    <i class="fa-solid fa-map-location-dot text-4xl text-amazon-500 mr-3"></i> Mapa interactivo de la sede Satipo
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-darkcard border-t border-darkborder py-8 text-center text-xs text-gray-400">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="font-bold text-white mb-2">CINEMAZON PERÚ S.A.C. — Satipo, Junín, Perú</p>
-            <p>&copy; 2026 Todos los derechos reservados. "El encuentro de la selva con el cine".</p>
-        </div>
-    </footer>
-
-    <!-- MODAL DE TRÁILER -->
-    <div id="trailerModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="relative w-full max-w-4xl bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-2xl">
-            <button onclick="closeTrailerModal()" class="absolute top-4 right-4 z-10 text-gray-400 hover:text-white bg-darkbg p-2 rounded-full border border-darkborder">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div class="aspect-video w-full">
-                <iframe id="trailerIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE SELECCIÓN DE ASIENTOS -->
-    <div id="seatModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="relative w-full max-w-2xl bg-darkcard border border-darkborder rounded-2xl p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onclick="closeSeatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <h3 id="seatMovieTitle" class="text-xl font-bold text-white mb-1">Reserva de Asientos</h3>
-            <p id="seatMovieTime" class="text-xs text-amazon-400 font-bold mb-6">Horario seleccionado</p>
-
-            <!-- PANTALLA CINE -->
-            <div class="screen-curved mb-8 text-center">
-                <div class="screen-inner bg-gradient-to-r from-amazon-500/30 via-amazon-400 to-amazon-500/30 text-emerald-300 font-black py-2 rounded-lg text-xs uppercase tracking-widest border border-amazon-500/50 mb-2">
-                    PANTALLA CINE 4K
-                </div>
-            </div>
-
-            <!-- GRILLA ASIENTOS -->
-            <div class="grid grid-cols-6 gap-2 max-w-md mx-auto mb-6 text-center text-xs">
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A1</button>
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A2</button>
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A3</button>
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A4</button>
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A5</button>
-                <button onclick="toggleSeat(this)" class="p-2 rounded bg-darkbg border border-darkborder text-gray-300 hover:border-amazon-500">A6</button>
-            </div>
-
-            <div class="flex items-center justify-between border-t border-darkborder pt-4">
-                <div>
-                    <span class="text-xs text-gray-400 block">Total Entradas:</span>
-                    <span id="seatTotalPrice" class="text-lg font-black text-amazon-400">S/. 0.00</span>
-                </div>
-                <button onclick="confirmSeatBooking()" class="bg-amazon-500 hover:bg-amazon-600 text-white font-extrabold px-6 py-2.5 rounded-xl text-xs shadow-lg transition-all">
-                    Confirmar Reserva
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPT DE NAVEGACIÓN Y FUNCIONES -->
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function openTrailerModal(url) {
-            const modal = document.getElementById('trailerModal');
-            const iframe = document.getElementById('trailerIframe');
-            iframe.src = url.replace('watch?v=', 'embed/');
-            modal.classList.remove('hidden');
-        }
-
-        function closeTrailerModal() {
-            const modal = document.getElementById('trailerModal');
-            const iframe = document.getElementById('trailerIframe');
-            iframe.src = '';
-            modal.classList.add('hidden');
-        }
-
-        function openSeatModal(id, title, time) {
-            document.getElementById('seatMovieTitle').innerText = title;
-            document.getElementById('seatMovieTime').innerText = 'Función: ' + time;
-            document.getElementById('seatModal').classList.remove('hidden');
-        }
-
-        function closeSeatModal() {
-            document.getElementById('seatModal').classList.add('hidden');
-        }
-
-        function toggleSeat(btn) {
-            btn.classList.toggle('bg-amazon-500');
-            btn.classList.toggle('text-white');
-        }
-
-        function addToCart(item, price) {
-            alert('¡' + item + ' agregado al carrito!');
-        }
-
-        function confirmSeatBooking() {
-            alert('¡Reserva confirmada con éxito!');
-            closeSeatModal();
-        }
-    </script>
-</body>
-</html>
+                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col 
