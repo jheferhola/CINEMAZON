@@ -1,1181 +1,946 @@
 <!DOCTYPE html>
-<html lang="es" class="dark scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CINEMAZON - Cine Selva Central | Satipo, Junín</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        amazon: {
-                            50: '#e6f9f0',
-                            100: '#c3f0d8',
-                            400: '#10b981',
-                            500: '#00a859',
-                            600: '#008a48',
-                            700: '#006b37',
-                            800: '#034d28',
-                            900: '#01321a'
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706'
-                        },
-                        darkbg: '#0c1015',
-                        darkcard: '#141a23',
-                        darkborder: '#222d3d'
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    
     <style>
-        /* Custom styles & scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        :root {
+            --green-primary: #128833;
+            --green-dark: #09471A;
+            --green-accent: #00E640;
+            --brand-yellow: #FFB800;
+            --brand-orange: #FF6B00;
+            --bg-dark: #0A0F0D;
+            --bg-card: #141C18;
+            --bg-lighter: #1E2822;
+            --text-light: #F2F5F3;
+            --text-muted: #9BAA9E;
+            --border-color: rgba(0, 230, 64, 0.15);
         }
-        ::-webkit-scrollbar-track {
-            background: #0c1015;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #222d3d;
-            border-radius: 4px;
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00a859;
+
+        /* HEADER & NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 15, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
         }
-        .hero-gradient {
-            background: linear-gradient(180deg, rgba(12, 16, 21, 0.3) 0%, rgba(12, 16, 21, 0.85) 75%, #0c1015 100%);
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
         }
-        .glow-green {
-            box-shadow: 0 0 25px rgba(0, 168, 89, 0.4);
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
         }
-        .glow-gold {
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+
+        .logo-svg {
+            width: 48px;
+            height: 48px;
         }
-        .screen-curved {
-            perspective: 500px;
+
+        .brand-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #00E640, #128833, #FFB800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .screen-inner {
-            transform: rotateX(-12deg);
-            box-shadow: 0 15px 40px rgba(0, 168, 89, 0.45);
+
+        .brand-tagline {
+            font-size: 0.65rem;
+            color: var(--brand-yellow);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
-        .ticket-cut {
-            mask-image: radial-gradient(circle at 0% 50%, transparent 12px, black 13px), radial-gradient(circle at 100% 50%, transparent 12px, black 13px);
-            mask-composite: intersect;
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--green-accent);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--green-accent);
+            border-radius: 2px;
+        }
+
+        .cart-btn {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+            border: 1px solid var(--green-accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 230, 64, 0.4);
+        }
+
+        .badge {
+            background: var(--brand-yellow);
+            color: #000;
+            font-size: 0.75rem;
+            padding: 2px 7px;
+            border-radius: 50%;
+            font-weight: 800;
+        }
+
+        /* MAIN LAYOUT & SECTIONS */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--green-accent);
+        }
+
+        .section-block {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .section-block.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* INICIO - DOCUMENTACIÓN INSTITUCIONAL */
+        .doc-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            background: var(--bg-card);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .doc-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .doc-tab-btn:hover {
+            color: var(--text-light);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .doc-tab-btn.active {
+            background: var(--green-primary);
+            color: white;
+        }
+
+        .doc-panel {
+            display: none;
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .doc-panel.active {
+            display: block;
+        }
+
+        .doc-panel h3 {
+            font-size: 1.5rem;
+            color: var(--green-accent);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .doc-card {
+            background: var(--bg-lighter);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--green-accent);
+        }
+
+        .doc-card h4 {
+            color: var(--brand-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        /* HERO & CARTELERA */
+        .hero-banner {
+            background: linear-gradient(rgba(10,15,13,0.6), rgba(10,15,13,0.95)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80') center/cover;
+            height: 380px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .movie-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .movie-poster {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 1.2rem;
+        }
+
+        .movie-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .movie-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-accent));
+            color: #000;
+            font-weight: 700;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* DULCERÍA / CONFITERÍA */
+        .candy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .candy-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .candy-img {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            color: var(--brand-yellow);
+            font-weight: 800;
+            margin: 0.8rem 0;
+        }
+
+        /* SEAT SELECTOR MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 650px;
+            padding: 2rem;
+            border: 1px solid var(--green-accent);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .screen {
+            background: linear-gradient(to bottom, var(--green-accent), transparent);
+            height: 12px;
+            width: 80%;
+            margin: 1rem auto 2rem;
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--green-accent);
+        }
+
+        .seats-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+            margin-bottom: 2rem;
+            justify-items: center;
+        }
+
+        .seat {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-lighter);
+            border: 1px solid var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .seat.selected {
+            background: var(--green-accent);
+            color: #000;
+            font-weight: bold;
+            border-color: var(--green-accent);
+        }
+
+        .seat.occupied {
+            background: #4a4a4a;
+            cursor: not-allowed;
+            border-color: #333;
+        }
+
+        /* DRAWER CART */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100%;
+            background: var(--bg-card);
+            z-index: 3000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+            transition: right 0.3s ease;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin: 1.5rem 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            background: var(--bg-lighter);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050806;
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-amazon-500 selection:text-white flex flex-col min-h-screen">
+<body>
 
-    <!-- Toast Notification Container -->
-    <div id="toastContainer" class="fixed top-24 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
-    <!-- HEADER NAVBAR -->
-    <header class="sticky top-0 z-40 bg-darkbg/95 backdrop-blur-md border-b border-darkborder/80 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Official Cinemazon Vector Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="relative w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
-                            <!-- Leaves -->
-                            <path d="M 45 110 C 20 90 20 60 55 50 C 45 80 70 95 45 110 Z" fill="#00a859" />
-                            <path d="M 35 130 C 10 120 15 90 48 85 C 35 110 55 125 35 130 Z" fill="#007a40" />
-                            
-                            <!-- Film Reel 'C' Shape -->
-                            <path d="M 120 40 A 65 65 0 1 0 120 160 A 22 22 0 0 0 120 125 A 30 30 0 1 1 120 75 A 22 22 0 0 0 120 40 Z" fill="#01321a" stroke="#00a859" stroke-width="4"/>
-                            <circle cx="95" cy="65" r="7" fill="#00a859"/>
-                            <circle cx="65" cy="98" r="7" fill="#00a859"/>
-                            <circle cx="95" cy="132" r="7" fill="#00a859"/>
-                            
-                            <!-- Toucan Head & Beak -->
-                            <!-- Beak Green Top & Yellow Bottom -->
-                            <path d="M 115 22 C 150 15 185 35 190 60 C 160 58 135 48 115 50 Z" fill="#00a859"/>
-                            <path d="M 115 50 C 140 48 170 58 190 60 C 165 78 135 70 115 58 Z" fill="#fbbf24"/>
-                            <path d="M 115 22 C 120 30 118 45 115 58 Z" fill="#121517"/>
-                            
-                            <!-- Head & Eye -->
-                            <path d="M 85 45 C 95 25 120 22 125 45 C 120 65 95 65 85 45 Z" fill="#121517"/>
-                            <circle cx="108" cy="38" r="8" fill="#ffffff"/>
-                            <circle cx="109" cy="38" r="4" fill="#121517"/>
-                        </svg>
-                    </div>
-
-                    <div class="flex flex-col">
-                        <div class="flex items-center">
-                            <span class="text-2xl font-black tracking-tight text-white font-sans">CINEMA<span class="text-amazon-500">ZON</span></span>
-                        </div>
-                        <span class="text-[9px] tracking-widest text-emerald-400 font-extrabold uppercase block -mt-1">Cine Selva Central • Satipo</span>
-                    </div>
-                </a>
-
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-7 font-semibold text-sm">
-                    <a href="#cartelera" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-film text-amazon-500"></i> Cartelera
-                    </a>
-                    <a href="#dulceria" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-popcorn text-gold-500"></i> Dulcería & Combos
-                    </a>
-                    <a href="#promociones" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-tags text-emerald-400"></i> Promociones
-                    </a>
-                    <a href="#ubicacion" class="text-gray-300 hover:text-amazon-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-red-500"></i> Satipo
-                    </a>
-                </nav>
-
-                <!-- Search & Cart -->
-                <div class="flex items-center gap-3">
-                    <!-- Movie Search Box -->
-                    <div class="relative hidden sm:block w-48 lg:w-60">
-                        <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Buscar película..." class="w-full bg-darkcard border border-darkborder focus:border-amazon-500 rounded-xl px-3 py-1.5 pl-9 text-xs text-white outline-none transition-all placeholder-gray-500">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-gray-500"></i>
-                    </div>
-
-                    <!-- Cart Trigger -->
-                    <button onclick="toggleCartSidebar(true)" class="relative p-2.5 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500/50 text-gray-200 transition-all duration-300 hover:text-amazon-500 flex items-center gap-2">
-                        <i class="fa-solid fa-basket-shopping text-base"></i>
-                        <span class="hidden lg:inline text-xs font-bold text-gray-300" id="headerCartTotal">S/. 0.00</span>
-                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-amazon-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center hidden shadow-md">0</span>
-                    </button>
-
-                    <a href="#cartelera" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-bold px-4 py-2 rounded-xl shadow-lg shadow-amazon-500/20 hover:scale-105 active:scale-95 transition-all text-xs">
-                        <i class="fa-solid fa-ticket"></i> Entradas
-                    </a>
-
-                    <!-- Mobile Toggle -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-darkcard">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="brand-logo" onclick="switchSection('inicio')">
+                <svg class="logo-svg" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="90" fill="#09471A"/>
+                    <path d="M 60 120 C 40 80, 80 30, 130 50 C 170 70, 160 130, 110 150 Z" fill="#128833"/>
+                    <circle cx="85" cy="85" r="22" fill="#FFF"/>
+                    <circle cx="85" cy="85" r="10" fill="#000"/>
+                    <path d="M 110 60 Q 160 50 170 90 Q 130 95 110 60 Z" fill="#FFB800"/>
+                    <path d="M 40 100 Q 20 140 70 160 Q 80 130 40 100 Z" fill="#00E640"/>
+                </svg>
+                <div>
+                    <div class="brand-name">CINEMAZON</div>
+                    <div class="brand-tagline">Cine Selva Central • Satipo</div>
                 </div>
-            </div>
-        </div>
+            </a>
 
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobileMenu" class="hidden md:hidden bg-darkcard border-b border-darkborder px-4 py-4 space-y-3">
-            <div class="mb-3">
-                <input type="text" oninput="handleSearch()" placeholder="Buscar película..." class="w-full bg-darkbg border border-darkborder rounded-xl px-3 py-2 text-xs text-white outline-none">
-            </div>
-            <a href="#cartelera" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-film w-6 text-amazon-500"></i> Cartelera</a>
-            <a href="#dulceria" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-popcorn w-6 text-gold-500"></i> Dulcería & Combos</a>
-            <a href="#promociones" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-tags w-6 text-emerald-400"></i> Promociones</a>
-            <a href="#ubicacion" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-amazon-500 py-1.5 font-medium"><i class="fa-solid fa-location-dot w-6 text-red-500"></i> Ubicación Satipo</a>
-        </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link active" onclick="switchSection('inicio')">Inicio</a></li>
+                <li><a href="#cartelera" class="nav-link" onclick="switchSection('cartelera')">Cartelera</a></li>
+                <li><a href="#dulceria" class="nav-link" onclick="switchSection('dulceria')">Dulcería</a></li>
+                <li><a href="#promos" class="nav-link" onclick="switchSection('promos')">Promociones</a></li>
+            </ul>
+
+            <button class="cart-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Carrito</span>
+                <span class="badge" id="cart-count">0</span>
+            </button>
+        </nav>
     </header>
 
-    <!-- HERO CAROUSEL -->
-    <section class="relative bg-darkbg overflow-hidden min-h-[500px] lg:min-h-[580px] flex items-center border-b border-darkborder">
-        <!-- Hero Background Images Container -->
-        <div id="heroBgContainer" class="absolute inset-0 z-0 transition-opacity duration-700">
-            <img id="heroBgImage" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1600&q=80" class="w-full h-full object-cover object-center scale-105 transition-all duration-1000" alt="Cinemazon Hero Banner">
-            <div class="absolute inset-0 hero-gradient"></div>
+    <main class="container">
+
+        <!-- SECCIÓN 1: INICIO - DOCUMENTACIÓN INSTITUCIONAL -->
+        <section id="inicio-section" class="section-block active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1>Bienvenidos a CINEMAZON</h1>
+                    <p>La mejor experiencia de entretenimiento cinematográfico en Satipo, Junín.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title"><i class="fa-solid fa-folder-tree"></i> Presentación e Identidad Institucional</h2>
+
+            <!-- TABS DE NAVEGACIÓN DE DOCUMENTACIÓN -->
+            <div class="doc-tabs">
+                <button class="doc-tab-btn active" onclick="switchDocTab('empresa')">1. Empresa</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('publico')">2. Público Objetivo</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('identidad-corp')">3. Identidad Corp.</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('identidad-vis')">4. Identidad Visual</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('imagen')">5. Imagen Inst.</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('aplicaciones')">6. Aplicaciones</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('comunicacion')">7. Comunicación</button>
+                <button class="doc-tab-btn" onclick="switchDocTab('mejora')">8. Propuestas Mejora</button>
+            </div>
+
+            <!-- CONTENIDOS DE LAS TABS -->
+            <div id="tab-empresa" class="doc-panel active">
+                <h3>1. Empresa</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Datos de la Empresa</h4>
+                        <p><strong>Razon Social:</strong> CINEMAZON PERU S.A.C.</p>
+                        <p><strong>Ubicación:</strong> Satipo, Junín, Perú.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Descripción</h4>
+                        <p>Cadena moderna de salas cinematográficas enfocada en brindar la mejor tecnología audiovisual y comodidad a las familias de la Selva Central.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Misión</h4>
+                        <p>Brindar experiencias únicas de entretenimiento cinematográfico con alta calidad y calidez regional.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Visión</h4>
+                        <p>Ser el cine líder indiscutible en la Selva Central del Perú para el año 2030.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Valores Corporativos</h4>
+                        <p>Hospitalidad, Innovación, Calidad Audiovisual, Identidad Cultural y Puntualidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-publico" class="doc-panel">
+                <h3>2. Público Objetivo</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Segmento Objetivo</h4>
+                        <p>Familias, jóvenes universitarios, parejas y entusiastas del cine regional y comercial.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Edad</h4>
+                        <p>Público diverso de 12 a 55 años.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Ubicación</h4>
+                        <p>Residentes y visitantes de Satipo, Río Negro, Mazamari y zonas aledañas de Junín.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Necesidades</h4>
+                        <p>Sistemas modernos de reserva digital, confitería variada con toque regional y salas climatizadas.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Características</h4>
+                        <p>Consumidores digitales activos en redes sociales que buscan opciones de ocio de nivel metropolitano.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-identidad-corp" class="doc-panel">
+                <h3>3. Identidad Corporativa</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>¿Qué es la Imagen Corporativa?</h4>
+                        <p>La construcción mental e identidad percibida por nuestros clientes sobre nuestro servicio y marca.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Elementos de Identidad</h4>
+                        <p>Mascota icónica (Tucán), paleta de color Selva Central, tipografía moderna y servicio personalizado.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Identidad Cultural y Verbal</h4>
+                        <p>Orgullo selvático, tono amigable, entusiasta y cercano en todas las plataformas digitales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-identidad-vis" class="doc-panel">
+                <h3>4. Identidad Visual</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Logotipo</h4>
+                        <p>Isologotipo integrado por un tucán estilizado, rollo cinematográfico en forma de 'C' y hojas representativas.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Colores Corporativos</h4>
+                        <p>Verde Esmeralda (#128833), Verde Bosque (#09471A), Verde Neón (#00E640) y Amarillo Dorado (#FFB800).</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Tipografía & Empaques</h4>
+                        <p>Montserrat y Poppins para máxima legibilidad. Empaques branded para canchita, nachos y vasos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-imagen" class="doc-panel">
+                <h3>5. Imagen Institucional</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Percepción del Cliente</h4>
+                        <p>Marca moderna, limpia, moderna y con gran pertenencia a la Selva Central.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Fortalezas</h4>
+                        <p>Único complejo cinematográfico moderno con reserva online y combos temáticos regionales en la zona.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-aplicaciones" class="doc-panel">
+                <h3>6. Aplicaciones de Marca</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Vasos y Empaques</h4>
+                        <p>Vasos térmicos y cajas de Popcorn con branding del tucán oficial de Cinemazon.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Uniformes y Sitio Web</h4>
+                        <p>Polos Camiseros azul noche / verde esmeralda con gorra bordada y plataforma e-commerce adaptable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-comunicacion" class="doc-panel">
+                <h3>7. Comunicación</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Lenguaje Corporativo</h4>
+                        <p>Fresco, dinámico, moderno y acogedor.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Eslogan Principal</h4>
+                        <p><em>"Cine Selva Central - Donde las historias nos unen"</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-mejora" class="doc-panel">
+                <h3>8. Propuestas de Mejora</h3>
+                <div class="doc-grid">
+                    <div class="doc-card">
+                        <h4>Estandarización de Marca</h4>
+                        <p>Manual oficial de uso de logotipo para prensa y medios locales.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Material Publicitario</h4>
+                        <p>Banners LED exteriores, afiches digitales y paneles informativos.</p>
+                    </div>
+                    <div class="doc-card">
+                        <h4>Redes Sociales</h4>
+                        <p>Estrategia de interacción en TikTok e Instagram con contenido detrás de cámaras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: CARTELERA -->
+        <section id="cartelera-section" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-film"></i> En Cartelera Hoy</h2>
+            <div class="movies-grid">
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80" class="movie-poster" alt="Pelicula 1">
+                    <div class="movie-info">
+                        <div class="movie-title">Avatar: El Camino del Agua</div>
+                        <div class="movie-meta"><span>2D / 3D</span> • <span>192 min</span></div>
+                        <button class="btn-primary" onclick="openSeatModal('Avatar', 15.00)">Comprar Boletos (S/. 15.00)</button>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?auto=format&fit=crop&w=500&q=80" class="movie-poster" alt="Pelicula 2">
+                    <div class="movie-info">
+                        <div class="movie-title">Super Mario Bros</div>
+                        <div class="movie-meta"><span>2D Animación</span> • <span>92 min</span></div>
+                        <button class="btn-primary" onclick="openSeatModal('Super Mario', 12.00)">Comprar Boletos (S/. 12.00)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: DULCERÍA -->
+        <section id="dulceria-section" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-popcorn"></i> Dulcería & Combos</h2>
+            <div class="candy-grid">
+                <div class="candy-card">
+                    <div class="candy-img">
+                        <i class="fa-solid fa-box-open fa-4x" style="color: var(--brand-yellow);"></i>
+                    </div>
+                    <h3>Combo Pareja</h3>
+                    <p>1 Canchita Gigante + 2 Gaseosas Regionales Grandes</p>
+                    <div class="price-tag">S/. 45.00</div>
+                    <button class="btn-primary" onclick="addToCart('Combo Pareja', 45.00)">Agregar al Carrito</button>
+                </div>
+                <div class="candy-card">
+                    <div class="candy-img">
+                        <i class="fa-solid fa-users fa-4x" style="color: var(--green-accent);"></i>
+                    </div>
+                    <h3>Combo Selva Central</h3>
+                    <p>2 Canchitas Medianas + 2 Bebidas + Nachos con Queso</p>
+                    <div class="price-tag">S/. 65.00</div>
+                    <button class="btn-primary" onclick="addToCart('Combo Selva Central', 65.00)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: PROMOCIONES -->
+        <section id="promos-section" class="section-block">
+            <h2 class="section-title"><i class="fa-solid fa-tags"></i> Promociones Especiales</h2>
+            <p>¡Disfruta de nuestros Martes 2x1 en Entradas y Miércoles de Refill de Canchita!</p>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE SELECCIÓN DE ASIENTOS -->
+    <div class="modal" id="seat-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSeatModal()">&times;</span>
+            <h3 id="modal-movie-title">Selecciona tus Asientos</h3>
+            <div class="screen"></div>
+            <div class="seats-grid" id="seats-container"></div>
+            <button class="btn-primary" onclick="confirmSeats()">Confirmar Selección</button>
         </div>
+    </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
-            <div class="max-w-2xl">
-                <!-- Tag -->
-                <div class="inline-flex items-center gap-2 bg-amazon-500/20 border border-amazon-500/40 text-emerald-300 font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4 backdrop-blur-sm">
-                    <span class="w-2 h-2 rounded-full bg-amazon-500 animate-pulse"></span> Gran Estreno en Satipo
-                </div>
-
-                <!-- Title & Specs -->
-                <h1 id="heroTitle" class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4 drop-shadow-md">
-                    AVENTURA AMAZÓNICA 3D
-                </h1>
-
-                <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-300 mb-6">
-                    <span class="bg-gold-500/20 border border-gold-500/50 text-gold-400 px-2.5 py-1 rounded-md font-extrabold">14+</span>
-                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock text-amazon-500"></i> <span id="heroDuration">2h 15min</span></span>
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-masks-theater text-amazon-500"></i> <span id="heroGenre">Acción / Fantasía</span></span>
-                    <span class="flex items-center gap-1 text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.9/5</span>
-                </div>
-
-                <p id="heroDescription" class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8 line-clamp-3">
-                    Una expedición épica a través de los ríos míticos y misterios ancestrales de la selva central. Diseñada especialmente para vivirse con el máximo sonido envolvente en Cinemazon Satipo.
-                </p>
-
-                <!-- Actions -->
-                <div class="flex flex-wrap items-center gap-4">
-                    <button onclick="openSeatModal('p1', 'AVENTURA AMAZÓNICA 3D', '18:30')" class="bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-extrabold px-7 py-3.5 rounded-xl shadow-lg shadow-amazon-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-ticket text-lg"></i> Reservar Asientos
-                    </button>
-                    <button onclick="openTrailerModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="bg-darkcard/80 hover:bg-darkborder text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 hover:text-white">
-                        <i class="fa-solid fa-circle-play text-red-500 text-lg"></i> Ver Tráiler
-                    </button>
-                </div>
-            </div>
+    <!-- CART DRAWER -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <span class="close-modal" onclick="toggleCart()">&times;</span>
         </div>
-
-        <!-- Carousel Indicators -->
-        <div class="absolute bottom-6 right-6 sm:right-12 z-20 flex gap-2" id="heroDots">
-            <button onclick="changeHero(0)" class="w-3 h-3 rounded-full bg-amazon-500 transition-all"></button>
-            <button onclick="changeHero(1)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
-            <button onclick="changeHero(2)" class="w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all"></button>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <h4>Total: S/. <span id="cart-total">0.00</span></h4>
+            <button class="btn-primary" style="margin-top: 1rem;" onclick="checkout()">Pagar con Yape / Plin</button>
         </div>
-    </section>
-
-    <!-- CARTELERA DE PELÍCULAS -->
-    <section id="cartelera" class="py-16 bg-darkbg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-                <div>
-                    <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">En Cartelera</span>
-                    <h2 class="text-3xl font-black text-white tracking-tight mt-1">Películas Disponibles en Satipo</h2>
-                    <p class="text-gray-400 text-sm mt-1">Elige la película y horario de tu preferencia para asegurar tu entrada.</p>
-                </div>
-
-                <!-- Date Tabs Filter -->
-                <div class="flex items-center bg-darkcard p-1.5 rounded-2xl border border-darkborder self-start md:self-auto">
-                    <button onclick="filterDate(this, 'hoy')" class="date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md">
-                        Hoy
-                    </button>
-                    <button onclick="filterDate(this, 'manana')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
-                        Mañana
-                    </button>
-                    <button onclick="filterDate(this, 'finde')" class="date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all">
-                        Fin de Semana
-                    </button>
-                </div>
-            </div>
-
-            <!-- Movies Grid Container -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="movieGrid">
-                
-                <!-- Movie 1 -->
-                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="Aventura Amazónica 3D">
-                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Aventura Amazónica 3D">
-                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-emerald-400 border border-emerald-500/30">
-                            3D DIGITAL
-                        </div>
-                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
-                            ★ 4.9
-                        </div>
-                    </div>
-
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
-                                <span>135 min</span> • <span>Acción / Fantasía</span> • <span class="text-emerald-400 font-bold">14+</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">Aventura Amazónica 3D</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
-                                Una aventura épica grabada en la selva central llena de acción, misterio y efectos de sonido Dolby Atmos.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="openSeatModal('p1', 'Aventura Amazónica 3D', '16:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    4:00 PM
-                                </button>
-                                <button onclick="openSeatModal('p1', 'Aventura Amazónica 3D', '18:30')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    6:30 PM
-                                </button>
-                                <button onclick="openSeatModal('p1', 'Aventura Amazónica 3D', '21:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    9:00 PM
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Movie 2 -->
-                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="El Guardián del Ucayali">
-                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="El Guardián del Ucayali">
-                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-blue-400 border border-blue-500/30">
-                            2D HD
-                        </div>
-                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
-                            ★ 4.7
-                        </div>
-                    </div>
-
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
-                                <span>110 min</span> • <span>Animación / Familia</span> • <span class="text-emerald-400 font-bold">APTA</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">El Guardián del Ucayali</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
-                                Un entrañable tucán aventurero debe rescatar el corazón del bosque tropical en esta historia mágica para toda la familia.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="openSeatModal('p2', 'El Guardián del Ucayali', '15:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    3:00 PM
-                                </button>
-                                <button onclick="openSeatModal('p2', 'El Guardián del Ucayali', '17:15')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    5:15 PM
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Movie 3 -->
-                <div class="movie-card bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-xl hover:border-amazon-500/50 transition-all duration-300 hover:-translate-y-1 group flex flex-col" data-title="Leyendas Nocturnas">
-                    <div class="relative overflow-hidden aspect-[2/3] max-h-[380px]">
-                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Leyendas Nocturnas">
-                        <div class="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-purple-400 border border-purple-500/30">
-                            2D TERROR
-                        </div>
-                        <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-gold-400 border border-gold-500/30">
-                            ★ 4.8
-                        </div>
-                    </div>
-
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-2 text-xs text-gray-400 mb-2">
-                                <span>122 min</span> • <span>Suspenso / Terror</span> • <span class="text-red-400 font-bold">18+</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amazon-500 transition-colors">Leyendas Nocturnas</h3>
-                            <p class="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
-                                Mitos misteriosos cobran vida en la penumbra de la selva. Un viaje no apto para cardíacos.
-                            </p>
-                        </div>
-
-                        <div>
-                            <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider block mb-2">Horarios disponibles:</span>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="openSeatModal('p3', 'Leyendas Nocturnas', '20:00')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    8:00 PM
-                                </button>
-                                <button onclick="openSeatModal('p3', 'Leyendas Nocturnas', '22:15')" class="bg-darkbg hover:bg-amazon-500 hover:text-white border border-darkborder hover:border-amazon-500 text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-xs transition-all">
-                                    10:15 PM
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- DULCERÍA & COMBOS SECTION -->
-    <section id="dulceria" class="py-16 bg-darkcard/40 border-t border-b border-darkborder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-gold-400 text-xs font-black uppercase tracking-widest">Dulcería Oficial Cinemazon</span>
-                <h2 class="text-3xl font-black text-white tracking-tight mt-1">Snacks y Combos Exclusivos</h2>
-                <p class="text-gray-400 text-sm mt-2">Personalizados con la frescura y sabor único de nuestra Selva Central.</p>
-            </div>
-
-            <!-- Categories Filter -->
-            <div class="flex justify-center flex-wrap gap-3 mb-10">
-                <button onclick="filterSnacks('todos')" class="snack-tab bg-amazon-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all">
-                    Todos
-                </button>
-                <button onclick="filterSnacks('combos')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
-                    🍿 Combos
-                </button>
-                <button onclick="filterSnacks('popcorn')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
-                    🌽 Canchita
-                </button>
-                <button onclick="filterSnacks('bebidas')" class="snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all">
-                    🥤 Bebidas Regionales
-                </button>
-            </div>
-
-            <!-- Product Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="snackGrid">
-                
-                <!-- Combo Pareja -->
-                <div class="snack-card combos bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-gold-500/50 transition-all flex flex-col justify-between group">
-                    <div>
-                        <!-- Vector Artwork Popcorn + Soda -->
-                        <div class="relative rounded-2xl overflow-hidden mb-5 bg-gradient-to-b from-darkbg to-darkcard p-6 flex items-center justify-center border border-darkborder">
-                            <svg viewBox="0 0 200 140" class="w-48 h-32 drop-shadow-xl">
-                                <!-- Popcorn Bucket -->
-                                <path d="M 40 40 L 50 120 L 110 120 L 120 40 Z" fill="#e5e7eb" stroke="#d1d5db" stroke-width="2"/>
-                                <!-- Official Logo Stamped on Bucket -->
-                                <circle cx="80" cy="80" r="16" fill="#01321a"/>
-                                <path d="M 80 68 A 12 12 0 1 0 80 92 Z" fill="#00a859"/>
-                                <circle cx="80" cy="74" r="2" fill="#fbbf24"/>
-
-                                <!-- Popcorn top -->
-                                <circle cx="50" cy="35" r="12" fill="#fbbf24"/>
-                                <circle cx="65" cy="28" r="14" fill="#fef08a"/>
-                                <circle cx="82" cy="25" r="15" fill="#fbbf24"/>
-                                <circle cx="100" cy="30" r="13" fill="#fef08a"/>
-                                <circle cx="112" cy="38" r="11" fill="#fbbf24"/>
-
-                                <!-- Soda Cup -->
-                                <path d="M 125 50 L 135 120 L 170 120 L 175 50 Z" fill="#00a859"/>
-                                <path d="M 120 50 L 180 50 L 175 42 L 125 42 Z" fill="#ffffff"/>
-                                <!-- Straw -->
-                                <path d="M 150 42 L 165 10" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
-                            </svg>
-                            <span class="absolute top-3 right-3 bg-gold-500 text-darkbg font-black text-[10px] uppercase px-2.5 py-1 rounded-md">Popular</span>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-white mb-1">Combo Pareja</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-4">1 Canchita Gigante Balde Cinemazon + 2 Gaseosas Medianas (Inca Kola / Regional) + 1 Dulce a elección.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
-                        <span class="text-amazon-500 font-black text-xl">S/. 45.00</span>
-                        <button onclick="addToCart('Combo Pareja', 45.00, 'combo')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
-                            <i class="fa-solid fa-plus"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Combo Selva Central -->
-                <div class="snack-card combos bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-amazon-500/50 transition-all flex flex-col justify-between group">
-                    <div>
-                        <div class="relative rounded-2xl overflow-hidden mb-5 bg-gradient-to-b from-darkbg to-darkcard p-6 flex items-center justify-center border border-darkborder">
-                            <svg viewBox="0 0 200 140" class="w-48 h-32 drop-shadow-xl">
-                                <!-- Nacho Tray -->
-                                <path d="M 20 80 L 30 115 L 110 115 L 120 80 Z" fill="#d1d5db"/>
-                                <polygon points="35,75 55,45 75,75" fill="#f59e0b"/>
-                                <polygon points="60,75 80,40 100,75" fill="#fbbf24"/>
-                                <path d="M 30 75 Q 65 60 105 75" fill="none" stroke="#ef4444" stroke-width="6"/>
-
-                                <!-- Large Regional Drink -->
-                                <path d="M 125 35 L 138 120 L 175 120 L 182 35 Z" fill="#01321a" stroke="#00a859" stroke-width="2"/>
-                                <circle cx="155" cy="75" r="14" fill="#00a859"/>
-                                <path d="M 120 35 L 187 35 L 182 28 L 125 28 Z" fill="#ffffff"/>
-                                <path d="M 155 28 L 160 8" stroke="#00a859" stroke-width="5" stroke-linecap="round"/>
-                            </svg>
-                            <span class="absolute top-3 right-3 bg-amazon-500 text-white font-black text-[10px] uppercase px-2.5 py-1 rounded-md">Recomendado</span>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-white mb-1">Combo Selva Central</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-4">1 Canchita Mantequilla + 1 Gaseosa Regional de Fruta + Nachos Crujientes con Queso Cheddar.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
-                        <span class="text-amazon-500 font-black text-xl">S/. 38.00</span>
-                        <button onclick="addToCart('Combo Selva Central', 38.00, 'combo')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
-                            <i class="fa-solid fa-plus"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Canchita Balde XL -->
-                <div class="snack-card popcorn bg-darkcard border border-darkborder rounded-2xl p-6 hover:border-gold-500/50 transition-all flex flex-col justify-between group">
-                    <div>
-                        <div class="relative rounded-2xl overflow-hidden mb-5 bg-gradient-to-b from-darkbg to-darkcard p-6 flex items-center justify-center border border-darkborder">
-                            <svg viewBox="0 0 200 140" class="w-48 h-32 drop-shadow-xl">
-                                <path d="M 50 35 L 65 125 L 135 125 L 150 35 Z" fill="#1e293b" stroke="#00a859" stroke-width="3"/>
-                                <!-- Toucan Logo SVG Centered -->
-                                <circle cx="100" cy="80" r="20" fill="#01321a"/>
-                                <path d="M 90 70 C 110 65 120 75 115 90 Z" fill="#00a859"/>
-                                <circle cx="95" cy="75" r="3" fill="#fbbf24"/>
-                                <!-- Popcorn Overflow -->
-                                <circle cx="65" cy="30" r="14" fill="#fbbf24"/>
-                                <circle cx="85" cy="20" r="16" fill="#fef08a"/>
-                                <circle cx="110" cy="18" r="17" fill="#fbbf24"/>
-                                <circle cx="132" cy="28" r="15" fill="#fef08a"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-white mb-1">Canchita Balde XL</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-4">Balde Gigante edición coleccionable Cinemazon con mantequilla extra o salada al gusto.</p>
-                    </div>
-                    <div class="flex items-center justify-between pt-4 border-t border-darkborder">
-                        <span class="text-amazon-500 font-black text-xl">S/. 22.00</span>
-                        <button onclick="addToCart('Canchita Balde XL', 22.00, 'snack')" class="bg-amazon-500/20 hover:bg-amazon-500 text-emerald-300 hover:text-white border border-amazon-500/40 font-bold px-4 py-2 rounded-xl text-xs transition-all flex items-center gap-1.5">
-                            <i class="fa-solid fa-plus"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PROMOCIONES & SOCIAL -->
-    <section id="promociones" class="py-16 bg-darkbg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-emerald-400 text-xs font-black uppercase tracking-widest">Beneficios Exclusivos</span>
-                <h2 class="text-3xl font-black text-white tracking-tight mt-1">Promociones Especiales</h2>
-                <p class="text-gray-400 text-sm mt-2">Aprovecha nuestras ofertas semanales en las salas de Cinemazon Satipo.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Promo 1 -->
-                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-amazon-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-amazon-500 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-amazon-500/20 text-amazon-500 flex items-center justify-center text-xl font-bold mb-4">
-                        2x1
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white mb-2">Miércoles de Cine 2x1</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                        Ven acompañado los miércoles y paga solo 1 entrada para funciones 2D y 3D en todas nuestras salas.
-                    </p>
-                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-wider block">Válido en Boletería y Web</span>
-                </div>
-
-                <!-- Promo 2 -->
-                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-gold-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-gold-500 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white mb-2">Descuento Estudiantil</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                        Presenta tu carnet escolar o universitario en boletería y obtén un 25% de descuento de Lunes a Viernes.
-                    </p>
-                    <span class="text-gold-400 font-bold text-xs uppercase tracking-wider block">Satipo & Selva Central</span>
-                </div>
-
-                <!-- Promo 3 -->
-                <div class="bg-gradient-to-br from-darkcard to-darkbg border border-purple-500/30 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500 transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl font-bold mb-4">
-                        🎂
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white mb-2">Cumpleañero Gratis</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                        ¡En tu cumpleaños la entrada es totalmente gratis! Presenta tu DNI en boletería el día de tu cumpleaños.
-                    </p>
-                    <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block">Incluye Regalo Sorpresa</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- UBICACIÓN & CONTACTO SATIPO -->
-    <section id="ubicacion" class="py-16 bg-darkcard/30 border-t border-darkborder">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                
-                <!-- Info Left -->
-                <div>
-                    <span class="text-amazon-500 text-xs font-black uppercase tracking-widest">Nuestra Sede</span>
-                    <h2 class="text-3xl font-black text-white tracking-tight mt-1 mb-6">Visítanos en Satipo, Junín</h2>
-                    
-                    <div class="space-y-4 text-sm text-gray-300 mb-8">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
-                                <i class="fa-solid fa-location-dot text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white">Dirección Central</h4>
-                                <p class="text-gray-400 text-xs">Av. Raymondi cda 5 / Jr. Julio C. Tello, Satipo - Junín, Perú.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
-                                <i class="fa-solid fa-clock text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white">Horario de Atención</h4>
-                                <p class="text-gray-400 text-xs">Lunes a Domingo: 2:00 PM - 11:30 PM</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder flex items-center justify-center text-amazon-500 shrink-0">
-                                <i class="fa-solid fa-phone text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white">Consultas & Whatsapp</h4>
-                                <p class="text-gray-400 text-xs">+51 964 123 456 • informes@cinemazon.pe</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Media Links -->
-                    <div class="flex items-center gap-3">
-                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">Síguenos:</span>
-                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://tiktok.com" target="_blank" class="w-10 h-10 rounded-xl bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 hover:text-amazon-500 flex items-center justify-center transition-all"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 sm:p-8">
-                    <h3 class="text-xl font-bold text-white mb-2">Envíanos un Mensaje</h3>
-                    <p class="text-gray-400 text-xs mb-6">¿Tienes consultas sobre reservas grupales o promociones? Escríbenos directamente.</p>
-
-                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Nombre Completo</label>
-                            <input type="text" required placeholder="Tu nombre" class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Correo Electrónico</label>
-                            <input type="email" required placeholder="ejemplo@correo.com" class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Mensaje</label>
-                            <textarea rows="3" required placeholder="Escribe tu mensaje aquí..." class="w-full bg-darkbg border border-darkborder focus:border-amazon-500 rounded-xl px-4 py-2.5 text-xs text-white outline-none transition-all"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-xs">
-                            Enviar Mensaje
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- FOOTER -->
-    <footer class="bg-darkbg border-t border-darkborder py-10 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8">
-                    <svg viewBox="0 0 200 200" class="w-full h-full">
-                        <path d="M 120 40 A 65 65 0 1 0 120 160 Z" fill="#00a859"/>
-                        <path d="M 115 22 C 150 15 185 35 190 60 C 160 58 135 48 115 50 Z" fill="#00a859"/>
-                        <path d="M 115 50 C 140 48 170 58 190 60 C 165 78 135 70 115 58 Z" fill="#fbbf24"/>
-                    </svg>
-                </div>
-                <div>
-                    <span class="text-base font-black tracking-wider text-white">CINEMA<span class="text-amazon-500">ZON</span></span>
-                    <p class="text-gray-500 text-[11px]">© 2026 CINEMAZON PERU S.A.C. | Todos los derechos reservados.</p>
-                </div>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>CINEMAZON</h3>
+                <p>El primer cine moderno de Satipo, Junín.</p>
             </div>
-            <div class="flex flex-wrap justify-center items-center gap-6 text-xs text-gray-400">
-                <a href="#" class="hover:text-amazon-500 transition-colors">Términos y Condiciones</a>
-                <a href="#" class="hover:text-amazon-500 transition-colors">Política de Privacidad</a>
-                <a href="#" onclick="alert('Accediendo al Libro de Reclamaciones Virtual de Cinemazon Satipo...')" class="hover:text-amazon-500 transition-colors text-emerald-400 font-bold flex items-center gap-1.5">
-                    <i class="fa-solid fa-book"></i> Libro de Reclamaciones
-                </a>
+            <div>
+                <h4>Contacto</h4>
+                <p>Av. Principal, Satipo - Junín</p>
+                <p>info@cinemazon.pe</p>
             </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CINEMAZON PERU S.A.C. Todos los derechos reservados.
         </div>
     </footer>
 
-    <!-- MODAL DE SELECCIÓN DE ASIENTOS -->
-    <div id="seatModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-darkcard border border-darkborder rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
-            <!-- Close Button -->
-            <button onclick="closeSeatModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Modal Header -->
-            <div class="mb-6">
-                <span class="text-amazon-500 text-xs font-black uppercase tracking-wider">Reserva de Entradas</span>
-                <h3 id="modalMovieTitle" class="text-2xl font-bold text-white mt-1">Aventura Amazónica 3D</h3>
-                <p id="modalMovieDetails" class="text-xs text-gray-400 mt-1">SALA 1 (Satipo) • Horario: <span id="modalShowtime" class="text-emerald-400 font-bold">18:30</span> • Entrada General: S/. 15.00</p>
-            </div>
-
-            <!-- Screen Graphic -->
-            <div class="w-full mb-8 text-center screen-curved">
-                <div class="w-3/4 mx-auto h-2.5 bg-gradient-to-r from-amazon-500/20 via-amazon-500 to-amazon-500/20 rounded-full screen-inner mb-2"></div>
-                <span class="text-[10px] uppercase font-black tracking-widest text-gray-500">PANTALLA DE CINE</span>
-            </div>
-
-            <!-- Seat Layout Grid -->
-            <div class="flex flex-col items-center gap-3 mb-8" id="seatGrid">
-                <!-- Generated via JS -->
-            </div>
-
-            <!-- Legend -->
-            <div class="flex justify-center items-center gap-6 text-xs text-gray-400 mb-6 border-t border-b border-darkborder py-3">
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-darkbg border border-gray-600 inline-block"></span> Disponible
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-amazon-500 inline-block"></span> Seleccionado
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="w-4 h-4 rounded-md bg-gray-700 opacity-50 cursor-not-allowed inline-block"></span> Ocupado
-                </div>
-            </div>
-
-            <!-- Total and Action -->
-            <div class="flex items-center justify-between pt-2">
-                <div>
-                    <span class="text-xs text-gray-400 block">Asientos: <span id="selectedSeatsCount" class="text-white font-bold">0</span></span>
-                    <span class="text-xl font-black text-amazon-500">Total: S/. <span id="seatTotalPrice">0.00</span></span>
-                </div>
-                <button onclick="confirmSeatBooking()" class="bg-amazon-500 hover:bg-amazon-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-xs">
-                    Confirmar y Agregar al Carrito
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SHOPPING CART SIDEBAR DRAWER -->
-    <div id="cartSidebar" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-darkcard border-l border-darkborder shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-        <!-- Sidebar Header -->
-        <div class="p-5 border-b border-darkborder flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-basket-shopping text-amazon-500 text-xl"></i>
-                <h3 class="text-lg font-bold text-white">Tu Carrito de Compra</h3>
-            </div>
-            <button onclick="toggleCartSidebar(false)" class="text-gray-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-        </div>
-
-        <!-- Cart Items Container -->
-        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 space-y-4">
-            <div id="emptyCartMsg" class="text-center py-16 text-gray-500">
-                <i class="fa-solid fa-cart-flatbed text-4xl mb-3 block"></i>
-                <p class="text-sm">Tu carrito está vacío.</p>
-                <p class="text-xs text-gray-600 mt-1">Selecciona entradas o combos para comenzar.</p>
-            </div>
-        </div>
-
-        <!-- Sidebar Footer -->
-        <div class="p-5 border-t border-darkborder bg-darkbg space-y-4">
-            <div class="flex justify-between items-center text-sm">
-                <span class="text-gray-400">Subtotal</span>
-                <span class="text-white font-bold" id="cartSubtotal">S/. 0.00</span>
-            </div>
-            <div class="flex justify-between items-center text-base">
-                <span class="text-white font-black">Total a Pagar</span>
-                <span class="text-amazon-500 font-black text-xl" id="cartTotal">S/. 0.00</span>
-            </div>
-
-            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-amazon-500 to-emerald-600 hover:from-amazon-600 hover:to-emerald-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-amazon-500/20 text-center block text-xs uppercase tracking-wider">
-                Procesar Pago
-            </button>
-        </div>
-    </div>
-
-    <!-- CHECKOUT / PAYMENT MODAL -->
-    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-darkcard border border-darkborder rounded-3xl max-w-md w-full p-6 relative shadow-2xl">
-            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <h3 class="text-xl font-bold text-white mb-1">Finalizar Compra</h3>
-            <p class="text-xs text-gray-400 mb-6">Emisión directa de boleto digital para Cinemazon Satipo.</p>
-
-            <!-- Payment Methods -->
-            <div class="grid grid-cols-3 gap-3 mb-6">
-                <button onclick="selectPayment(this, 'yape')" class="pay-method border border-amazon-500 bg-amazon-500/10 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
-                    <span class="font-bold text-purple-400 text-xs">Yape</span>
-                </button>
-                <button onclick="selectPayment(this, 'plin')" class="pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
-                    <span class="font-bold text-cyan-400 text-xs">Plin</span>
-                </button>
-                <button onclick="selectPayment(this, 'card')" class="pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all">
-                    <span class="font-bold text-emerald-400 text-xs">Tarjeta</span>
-                </button>
-            </div>
-
-            <!-- Simulated QR code for Yape/Plin -->
-            <div id="qrContainer" class="bg-darkbg border border-darkborder rounded-2xl p-4 text-center mb-6">
-                <div class="w-32 h-32 bg-white p-2 mx-auto rounded-xl mb-2 flex items-center justify-center">
-                    <i class="fa-solid fa-qrcode text-6xl text-gray-900"></i>
-                </div>
-                <p class="text-xs text-gray-300 font-bold">Escanea con Yape / Plin al +51 964 123 456</p>
-                <p class="text-[11px] text-gray-400 mt-0.5">Monto total: <span id="checkoutAmount" class="font-extrabold text-amazon-500">S/. 0.00</span></p>
-            </div>
-
-            <button onclick="completePurchase()" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-xs uppercase tracking-wider">
-                Confirmar Pago y Obtener Entrada QR
-            </button>
-        </div>
-    </div>
-
-    <!-- DIGITAL TICKET MODAL -->
-    <div id="ticketModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-gradient-to-b from-darkcard to-darkbg border border-amazon-500/50 rounded-3xl max-w-sm w-full p-6 relative shadow-2xl ticket-cut text-center">
-            <button onclick="closeTicketModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <!-- Ticket Logo Header -->
-            <div class="w-12 h-12 mx-auto mb-2">
-                <svg viewBox="0 0 200 200" class="w-full h-full">
-                    <circle cx="100" cy="100" r="80" fill="#01321a"/>
-                    <path d="M 120 40 A 65 65 0 1 0 120 160 Z" fill="#00a859"/>
-                    <path d="M 115 22 C 150 15 185 35 190 60 C 160 58 135 48 115 50 Z" fill="#00a859"/>
-                    <path d="M 115 50 C 140 48 170 58 190 60 C 165 78 135 70 115 58 Z" fill="#fbbf24"/>
-                </svg>
-            </div>
-            <h4 class="text-lg font-black text-white tracking-wider">CINEMAZON</h4>
-            <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest block mb-4">Sede Satipo • Entrada Digital</span>
-
-            <div class="border-t border-b border-dashed border-darkborder py-4 my-2 text-left space-y-2 text-xs">
-                <p class="text-gray-400">Cliente: <span class="text-white font-bold">Visitante Satipo</span></p>
-                <p class="text-gray-400">Sede: <span class="text-white font-bold">Av. Raymondi, Satipo</span></p>
-                <div id="ticketDetailsList" class="space-y-1 text-emerald-300 font-bold pt-2 border-t border-darkborder"></div>
-            </div>
-
-            <!-- Simulated QR -->
-            <div class="my-4 bg-white p-3 rounded-xl w-36 h-36 mx-auto flex items-center justify-center">
-                <i class="fa-solid fa-qrcode text-7xl text-gray-900"></i>
-            </div>
-            <p class="text-[10px] text-gray-400 mb-4">Presenta este código QR en la entrada del cine o dulcería.</p>
-
-            <button onclick="closeTicketModal()" class="w-full bg-amazon-500 hover:bg-amazon-600 text-white font-bold py-2.5 rounded-xl text-xs">
-                Descargar / Finalizar
-            </button>
-        </div>
-    </div>
-
-    <!-- TRAILER MODAL -->
-    <div id="trailerModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="max-w-4xl w-full aspect-video relative bg-black rounded-2xl overflow-hidden border border-darkborder">
-            <button onclick="closeTrailerModal()" class="absolute top-3 right-3 text-white bg-black/60 p-2 rounded-full hover:bg-red-600 transition-all z-10">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <iframe id="trailerFrame" class="w-full h-full" src="" title="Movie Trailer" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-    </div>
-
+    <!-- JAVASCRIPT -->
     <script>
-        // Hero Slide Data
-        const heroSlides = [
-            {
-                title: "AVENTURA AMAZÓNICA 3D",
-                duration: "2h 15min",
-                genre: "Acción / Fantasía",
-                description: "Una expedición épica a través de los ríos míticos y misterios ancestrales de la selva central. Diseñada especialmente para vivirse con el máximo sonido envolvente en Cinemazon Satipo.",
-                bg: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1600&q=80"
-            },
-            {
-                title: "EL GUARDIÁN DEL UCAYALI",
-                duration: "1h 50min",
-                genre: "Animación / Familia",
-                description: "Un entrañable tucán aventurero debe rescatar el corazón del bosque tropical en esta historia mágica llena de color y emociones para todas las edades.",
-                bg: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=80"
-            },
-            {
-                title: "LEYENDAS NOCTURNAS",
-                duration: "2h 02min",
-                genre: "Suspenso / Terror",
-                description: "Mitos ancestrales y misterios oscuros cobran vida en las sombras de la jungla. ¿Te atreverás a descubrir la verdad?",
-                bg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1600&q=80"
-            }
-        ];
-
-        let currentHeroIndex = 0;
         let cart = [];
-        let currentBooking = { movieId: '', movieTitle: '', showtime: '', seats: [] };
-        const TICKET_PRICE = 15.00;
+        let selectedSeats = [];
+        let currentMovie = '';
+        let currentPrice = 0;
 
-        // Change Hero Slide
-        function changeHero(index) {
-            currentHeroIndex = index;
-            const slide = heroSlides[index];
-            document.getElementById('heroTitle').textContent = slide.title;
-            document.getElementById('heroDuration').textContent = slide.duration;
-            document.getElementById('heroGenre').textContent = slide.genre;
-            document.getElementById('heroDescription').textContent = slide.description;
-            document.getElementById('heroBgImage').src = slide.bg;
+        function switchSection(sectionId) {
+            document.querySelectorAll('.section-block').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(sectionId + '-section').classList.add('active');
+            
+            // Highlight nav link
+            const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(a => a.getAttribute('onclick').includes(sectionId));
+            if(activeLink) activeLink.classList.add('active');
+        }
 
-            const dots = document.getElementById('heroDots').children;
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = i === index 
-                    ? "w-3 h-3 rounded-full bg-amazon-500 transition-all" 
-                    : "w-3 h-3 rounded-full bg-gray-600 hover:bg-gray-400 transition-all";
+        function switchDocTab(tabId) {
+            document.querySelectorAll('.doc-panel').forEach(panel => panel.classList.remove('active'));
+            document.querySelectorAll('.doc-tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function openSeatModal(movie, price) {
+            currentMovie = movie;
+            currentPrice = price;
+            document.getElementById('modal-movie-title').innerText = 'Selecciona asientos para: ' + movie;
+            
+            const container = document.getElementById('seats-container');
+            container.innerHTML = '';
+            selectedSeats = [];
+            
+            for(let i = 1; i <= 24; i++) {
+                const seat = document.createElement('div');
+                seat.className = 'seat';
+                seat.innerText = i;
+                seat.onclick = () => {
+                    seat.classList.toggle('selected');
+                    if(seat.classList.contains('selected')) {
+                        selectedSeats.push(i);
+                    } else {
+                        selectedSeats = selectedSeats.filter(s => s !== i);
+                    }
+                };
+                container.appendChild(seat);
             }
-        }
-
-        // Auto Cycle Hero
-        setInterval(() => {
-            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
-            changeHero(currentHeroIndex);
-        }, 7000);
-
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Live Movie Search Filter
-        function handleSearch() {
-            const query = (document.getElementById('searchInput').value || '').toLowerCase();
-            const cards = document.querySelectorAll('.movie-card');
-            cards.forEach(card => {
-                const title = card.getAttribute('data-title').toLowerCase();
-                if (title.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Date Tabs Filter
-        function filterDate(btn, type) {
-            document.querySelectorAll('.date-tab').forEach(b => {
-                b.className = "date-tab text-gray-400 hover:text-white font-bold px-5 py-2 rounded-xl text-xs transition-all";
-            });
-            btn.className = "date-tab bg-amazon-500 text-white font-bold px-5 py-2 rounded-xl text-xs transition-all shadow-md";
-            showToast("Horarios actualizados para la fecha seleccionada.");
-        }
-
-        // Snack Category Filter
-        function filterSnacks(category) {
-            const cards = document.querySelectorAll('.snack-card');
-            cards.forEach(card => {
-                if (category === 'todos' || card.classList.contains(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            document.querySelectorAll('.snack-tab').forEach(b => {
-                b.className = "snack-tab bg-darkcard border border-darkborder hover:border-amazon-500 text-gray-300 font-bold px-5 py-2.5 rounded-xl text-xs transition-all";
-            });
-            event.currentTarget.className = "snack-tab bg-amazon-500 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition-all";
-        }
-
-        // Seat Modal Logic
-        function openSeatModal(movieId, title, time) {
-            currentBooking = { movieId, movieTitle: title, showtime: time, seats: [] };
-            document.getElementById('modalMovieTitle').textContent = title;
-            document.getElementById('modalShowtime').textContent = time;
-            document.getElementById('selectedSeatsCount').textContent = "0";
-            document.getElementById('seatTotalPrice').textContent = "0.00";
-
-            generateSeatGrid();
-            document.getElementById('seatModal').classList.remove('hidden');
+            
+            document.getElementById('seat-modal').classList.add('active');
         }
 
         function closeSeatModal() {
-            document.getElementById('seatModal').classList.add('hidden');
+            document.getElementById('seat-modal').classList.remove('active');
         }
 
-        function generateSeatGrid() {
-            const container = document.getElementById('seatGrid');
-            container.innerHTML = '';
-
-            const rows = ['A', 'B', 'C', 'D', 'E'];
-            const cols = 8;
-
-            rows.forEach(row => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = "flex items-center gap-2";
-
-                const label = document.createElement('span');
-                label.className = "text-xs font-bold text-gray-500 w-4 text-center";
-                label.textContent = row;
-                rowDiv.appendChild(label);
-
-                for (let c = 1; c <= cols; c++) {
-                    const seatId = `${row}${c}`;
-                    const isOccupied = (row === 'B' && (c === 3 || c === 4)) || (row === 'D' && c === 5); // Simulated reserved
-
-                    const btn = document.createElement('button');
-                    btn.setAttribute('data-seat', seatId);
-
-                    if (isOccupied) {
-                        btn.className = "w-7 h-7 rounded-md bg-gray-700 opacity-50 cursor-not-allowed text-[10px] font-bold text-gray-500 flex items-center justify-center";
-                        btn.disabled = true;
-                    } else {
-                        btn.className = "w-7 h-7 rounded-md bg-darkbg border border-gray-600 hover:border-amazon-500 text-[10px] font-bold text-gray-300 flex items-center justify-center transition-all seat-btn";
-                        btn.onclick = () => toggleSeat(seatId, btn);
-                    }
-
-                    btn.textContent = c;
-                    rowDiv.appendChild(btn);
-                }
-                container.appendChild(rowDiv);
-            });
-        }
-
-        function toggleSeat(seatId, element) {
-            const index = currentBooking.seats.indexOf(seatId);
-            if (index > -1) {
-                currentBooking.seats.splice(index, 1);
-                element.className = "w-7 h-7 rounded-md bg-darkbg border border-gray-600 hover:border-amazon-500 text-[10px] font-bold text-gray-300 flex items-center justify-center transition-all seat-btn";
-            } else {
-                currentBooking.seats.push(seatId);
-                element.className = "w-7 h-7 rounded-md bg-amazon-500 text-white font-bold flex items-center justify-center transition-all seat-btn glow-green";
-            }
-
-            const count = currentBooking.seats.length;
-            document.getElementById('selectedSeatsCount').textContent = count;
-            document.getElementById('seatTotalPrice').textContent = (count * TICKET_PRICE).toFixed(2);
-        }
-
-        function confirmSeatBooking() {
-            if (currentBooking.seats.length === 0) {
-                showToast("Por favor selecciona al menos un asiento.");
+        function confirmSeats() {
+            if(selectedSeats.length === 0) {
+                alert('Por favor selecciona al menos un asiento.');
                 return;
             }
-
-            const itemTitle = `Entrada: ${currentBooking.movieTitle} (${currentBooking.showtime}) [${currentBooking.seats.join(', ')}]`;
-            const itemPrice = currentBooking.seats.length * TICKET_PRICE;
-
-            addToCart(itemTitle, itemPrice, 'ticket');
+            addToCart(`Entrada ${currentMovie} (Asientos: ${selectedSeats.join(', ')})`, currentPrice * selectedSeats.length);
             closeSeatModal();
-            toggleCartSidebar(true);
         }
 
-        // Cart Management
-        function addToCart(name, price, type) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({ name, price, qty: 1, type });
-            }
-            updateCartUI();
-            showToast(`Agregado al carrito: ${name}`);
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            alert('¡Agregado al carrito!');
         }
 
-        function removeFromCart(name) {
-            cart = cart.filter(item => item.name !== name);
-            updateCartUI();
-        }
-
-        function changeQty(name, delta) {
-            const item = cart.find(i => i.name === name);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) {
-                    removeFromCart(name);
-                } else {
-                    updateCartUI();
-                }
-            }
-        }
-
-        function updateCartUI() {
-            const container = document.getElementById('cartItemsContainer');
-            const badge = document.getElementById('cartBadge');
-            const emptyMsg = document.getElementById('emptyCartMsg');
-
-            const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
-            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-
-            if (totalItems > 0) {
-                badge.textContent = totalItems;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
-
-            document.getElementById('headerCartTotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
             container.innerHTML = '';
-
-            if (cart.length === 0) {
-                container.appendChild(emptyMsg);
-            } else {
-                cart.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = "bg-darkbg border border-darkborder rounded-xl p-3 flex items-center justify-between gap-3";
-                    div.innerHTML = `
-                        <div class="flex-1">
-                            <h4 class="text-xs font-bold text-white leading-tight">${item.name}</h4>
-                            <span class="text-xs text-amazon-500 font-extrabold">S/. ${(item.price * item.qty).toFixed(2)}</span>
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>S/. ${item.price.toFixed(2)}</small>
                         </div>
-                        <div class="flex items-center gap-2 bg-darkcard px-2 py-1 rounded-lg border border-darkborder">
-                            <button onclick="changeQty('${item.name}', -1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">-</button>
-                            <span class="text-xs font-bold text-white">${item.qty}</span>
-                            <button onclick="changeQty('${item.name}', 1)" class="text-gray-400 hover:text-white px-1 font-bold text-xs">+</button>
-                        </div>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-
-            document.getElementById('cartSubtotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
-            document.getElementById('cartTotal').textContent = `S/. ${totalPrice.toFixed(2)}`;
-            document.getElementById('checkoutAmount').textContent = `S/. ${totalPrice.toFixed(2)}`;
+                        <i class="fa-solid fa-trash" style="cursor:pointer; color:#ff4d4d;" onclick="removeFromCart(${index})"></i>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('cart-total').innerText = total.toFixed(2);
         }
 
-        function toggleCartSidebar(open = null) {
-            const sidebar = document.getElementById('cartSidebar');
-            if (open === true) {
-                sidebar.classList.remove('translate-x-full');
-            } else if (open === false) {
-                sidebar.classList.add('translate-x-full');
-            } else {
-                sidebar.classList.toggle('translate-x-full');
-            }
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
         }
 
-        // Payment & Modal Controls
-        function openCheckoutModal() {
-            if (cart.length === 0) {
-                showToast("Tu carrito está vacío.");
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('open');
+        }
+
+        function checkout() {
+            if(cart.length === 0) {
+                alert('Tu carrito está vacío.');
                 return;
             }
-            toggleCartSidebar(false);
-            document.getElementById('checkoutModal').classList.remove('hidden');
-        }
-
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
-
-        function selectPayment(btn, type) {
-            document.querySelectorAll('.pay-method').forEach(b => {
-                b.className = "pay-method border border-darkborder hover:border-amazon-500 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all";
-            });
-            btn.className = "pay-method border border-amazon-500 bg-amazon-500/10 p-3 rounded-xl flex flex-col items-center gap-1.5 transition-all";
-        }
-
-        function completePurchase() {
-            const list = document.getElementById('ticketDetailsList');
-            list.innerHTML = '';
-            cart.forEach(item => {
-                const p = document.createElement('p');
-                p.textContent = `• ${item.qty}x ${item.name}`;
-                list.appendChild(p);
-            });
-
-            closeCheckoutModal();
-            document.getElementById('ticketModal').classList.remove('hidden');
+            alert('¡Gracias por tu compra en CINEMAZON! Muestra el código QR que se enviará a tu correo en la entrada.');
             cart = [];
-            updateCartUI();
-        }
-
-        function closeTicketModal() {
-            document.getElementById('ticketModal').classList.add('hidden');
-        }
-
-        function openTrailerModal(url) {
-            document.getElementById('trailerFrame').src = url;
-            document.getElementById('trailerModal').classList.remove('hidden');
-        }
-
-        function closeTrailerModal() {
-            document.getElementById('trailerFrame').src = "";
-            document.getElementById('trailerModal').classList.add('hidden');
-        }
-
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            showToast("¡Gracias por contactarnos! Responderemos pronto.");
-            e.target.reset();
-        }
-
-        // Toast Helper Notification
-        function showToast(message) {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = "bg-darkcard border border-amazon-500/80 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-xl pointer-events-auto flex items-center gap-2 transform transition-all duration-300 translate-x-10 opacity-0";
-            toast.innerHTML = `<i class="fa-solid fa-circle-check text-amazon-500 text-sm"></i> ${message}`;
-            
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-x-10', 'opacity-0');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.add('translate-x-10', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3500);
+            updateCart();
+            toggleCart();
         }
     </script>
 </body>
